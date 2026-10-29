@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "case_id": "6ff413a9-3128-4379-afb0-37c27e16040d",
+  "scope": "Local live-AI browser test, single account self-test. Role separation separately covered by mocked two-identity API tests.",
+  "passed": [
+    "E-7-1 conditional transition preview: consent removed, transition evidence added",
+    "Real PDF + JPEG upload via browser",
+    "Vision model returned zero findings on corrected synthetic files",
+    "Employee and reviewer preparation dispositions saved",
+    "Unfinished prefill rejected; input preserved",
+    "Unresolved external follow-up required resolution before approval",
+    "Approved page retained one external follow-up",
+    "HTML summary and JSON audit download contain follow-up",
+    "Audit hash chain valid, 15 events"
+  ],
+  "vision_proof": {
+    "mode": "live",
+    "provider": "Nebius Token Factory",
+    "model": "nvidia/Nemotron-3.5-Super-VL",
+    "http_status": 200,
+    "response_id": "chatcmpl-81134c372267eb3b",
+    "latency_ms": 6927,
+    "usage": {
+      "prompt_tokens": 6346,
+      "completion_tokens": 1675,
+      "total_tokens": 8021
+    },
+    "at": "2026-10-28T15:25:30.126Z"
+  },
+  "audit_events": 15,
+  "external_followups": 1,
+  "artifact_sha256": "c553b71538332878a6f700b7ce2adc6b4f55b6ff59e2890d1d0928ac8446f6b1"
+}

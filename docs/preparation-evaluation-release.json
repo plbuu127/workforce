@@ -1,0 +1,2238 @@
+{
+  "synthetic": true,
+  "at": "2026-10-28T14:29:48.823Z",
+  "reference_date": "2026-10-28",
+  "summary": {
+    "attempted": 12,
+    "planned": 12,
+    "completed": 12,
+    "passed": 12,
+    "field_correct": 36,
+    "field_total": 36,
+    "expected_findings": 16,
+    "missed_findings": 0,
+    "unexpected_findings": 0,
+    "tokens": 61044,
+    "scope": "Synthetic document acceptance evaluation, not a real-user or legal-accuracy study.",
+    "partial_correction": {
+      "resolved": [
+        "contract-signature"
+      ],
+      "unconfirmed": [],
+      "remaining": [
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "new": []
+    }
+  },
+  "results": [
+    {
+      "id": "01-clean",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-9bf355bcd1381420",
+        "latency_ms": 5125,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1184,
+          "total_tokens": 5247
+        },
+        "at": "2026-10-28T14:28:58.603Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed text and signature area are clear and legible; typed name appears in designated signature area."
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed stay information is clear and legible; no signature area present."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed text is clear and legible; no signature area present."
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "02-three-problems",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2026-11-05",
+          "actual": "2026-11-05",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "contract-signature",
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "actual_issues": [
+        "contract-signature",
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-97a45c6e017538b4",
+        "latency_ms": 3701,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1179,
+          "total_tokens": 5242
+        },
+        "at": "2026-10-28T14:29:02.312Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-01",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-01"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2026-11-05",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2026-11-05"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "blank",
+          "quality_reason": "All printed text is legible. The designated signature area contains a line but no visible mark, so it is blank. No personal identifiers appear in the transcription except redacted placeholders where needed, and the employer and job title as"
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2026-11-05 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed text is legible. The page has no signature field, so signature is not_applicable."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-01 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed text is legible. The page has no signature field, so signature is not_applicable."
+        }
+      ],
+      "issues": [
+        {
+          "id": "contract-signature",
+          "owner": "employee",
+          "title": "Check the unsigned contract",
+          "detail": "The signature area appears blank. Check the original and provide the agreed signed version, or ask your reviewer.",
+          "pages": [
+            "contract:1"
+          ],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "date-conflict",
+          "owner": "reviewer",
+          "title": "Review the start and expiry dates",
+          "detail": "The documents report a work start of 2026-11-10 and stay expiry of 2026-11-05. Compare the source documents and confirm the appropriate next step with the employee and responsible specialist.",
+          "pages": [
+            "stay:1",
+            "contract:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "expiry-reminder",
+          "owner": "reviewer",
+          "title": "Check the reported expiry",
+          "detail": "Reported expiry: 2026-11-05. Internal reminder based on 2026-10-28; this is not a statutory deadline.",
+          "pages": [
+            "stay:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "documents-start",
+          "owner": "reviewer",
+          "title": "Compare the start dates across documents",
+          "detail": "The uploaded pages use different start dates: 2026-11-10 / 2026-11-01. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "03-signature-only-fixed",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2026-11-05",
+          "actual": "2026-11-05",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "actual_issues": [
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-9969190987a693a9",
+        "latency_ms": 4523,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1232,
+          "total_tokens": 5295
+        },
+        "at": "2026-10-28T14:29:06.840Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-01",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-01"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2026-11-05",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2026-11-05"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "All printed dates and letters are legible. A typed name appears in the designated employee signature area, so the signature area is not blank. No blur, crop, or glare affects the relevant fields. This page is a synthetic test artifact, but "
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2026-11-05 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed dates and letters are legible. There is no signature area on this page. No blur, crop, or glare affects the relevant fields. This page is a synthetic test artifact, but the visible fields are clear."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-01 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed dates and letters are legible. There is no signature area on this page. No blur, crop, or glare affects the relevant fields. This page is a synthetic test artifact, but the visible fields are clear."
+        }
+      ],
+      "issues": [
+        {
+          "id": "date-conflict",
+          "owner": "reviewer",
+          "title": "Review the start and expiry dates",
+          "detail": "The documents report a work start of 2026-11-10 and stay expiry of 2026-11-05. Compare the source documents and confirm the appropriate next step with the employee and responsible specialist.",
+          "pages": [
+            "stay:1",
+            "contract:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "expiry-reminder",
+          "owner": "reviewer",
+          "title": "Check the reported expiry",
+          "detail": "Reported expiry: 2026-11-05. Internal reminder based on 2026-10-28; this is not a statutory deadline.",
+          "pages": [
+            "stay:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "documents-start",
+          "owner": "reviewer",
+          "title": "Compare the start dates across documents",
+          "detail": "The uploaded pages use different start dates: 2026-11-10 / 2026-11-01. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "04-all-document-fixes",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8b48714e35157397",
+        "latency_ms": 5431,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1153,
+          "total_tokens": 5216
+        },
+        "at": "2026-10-28T14:29:12.273Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed text and signature area are legible; typed name appears on signature line."
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed fields are clear and legible; no signature area is present on this page."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "Printed text is clear and legible; no signature area is present on this page."
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "05-unreadable-stay",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "field-status",
+        "field-stay_expiry",
+        "quality"
+      ],
+      "actual_issues": [
+        "field-status",
+        "field-stay_expiry",
+        "quality"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-953da01d1bc97d76",
+        "latency_ms": 3706,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1175,
+          "total_tokens": 5238
+        },
+        "at": "2026-10-28T14:29:15.983Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "",
+          "evidence": []
+        },
+        "stay_expiry": {
+          "value": "",
+          "evidence": []
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "All printed dates and letters are legible; the signature area contains a typed name and an underline mark in the designated area, so the signature is treated as visible for visual observation purposes only, not authenticity. No redaction of"
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID",
+          "quality": "unreadable",
+          "signature": "not_applicable",
+          "quality_reason": "The page contains only gray placeholder bars where stay details should appear; no printed status, expiry, or other relevant text is legible."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed dates and letters are legible; the page has no designated signature area, so the signature field is not applicable."
+        }
+      ],
+      "issues": [
+        {
+          "id": "quality-stay:1",
+          "owner": "employee",
+          "title": "Upload a clearer page",
+          "detail": "The text on this page is unreadable. Use a clear, complete image with readable dates.",
+          "pages": [
+            "stay:1"
+          ],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-status",
+          "owner": "employee",
+          "title": "Confirm the reported stay status",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-stay_expiry",
+          "owner": "employee",
+          "title": "Confirm the reported stay expiry",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "06-missing-stay",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "document-stay",
+        "field-status",
+        "field-stay_expiry"
+      ],
+      "actual_issues": [
+        "document-stay",
+        "field-status",
+        "field-stay_expiry"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-b0056c823f999102",
+        "latency_ms": 3392,
+        "usage": {
+          "prompt_tokens": 3021,
+          "completion_tokens": 966,
+          "total_tokens": 3987
+        },
+        "at": "2026-10-28T14:29:19.379Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "",
+          "evidence": []
+        },
+        "stay_expiry": {
+          "value": "",
+          "evidence": []
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed text and typed name in signature area are legible; no blur, crop, or glare obscures relevant fields. Signature area contains a visible typed name and line mark, so it is not blank. No stay status or stay expiry appears on this page,"
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed fields are legible with no blur, crop, or glare. No signature area is present on this page, so signature is not_applicable. No stay status or stay expiry appears on this page,"
+        }
+      ],
+      "issues": [
+        {
+          "id": "document-stay",
+          "owner": "employee",
+          "title": "Add the stay information document",
+          "detail": "This document is requested for this intake. Ask your reviewer if another document should be used.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-status",
+          "owner": "employee",
+          "title": "Confirm the reported stay status",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-stay_expiry",
+          "owner": "employee",
+          "title": "Confirm the reported stay expiry",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "07-missing-company",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "document-offer"
+      ],
+      "actual_issues": [
+        "document-offer"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-b8794b5ae4990d83",
+        "latency_ms": 3646,
+        "usage": {
+          "prompt_tokens": 2847,
+          "completion_tokens": 809,
+          "total_tokens": 3656
+        },
+        "at": "2026-10-28T14:29:23.028Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed dates and letters are legible; signature label and typed name are present in the designated area, though the page is a test artifact with no legal effect and no personal identifiers included as stated on the page itself, so no reda­"
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "Printed dates and letters are legible; there is no signature area on the page."
+        }
+      ],
+      "issues": [
+        {
+          "id": "document-offer",
+          "owner": "reviewer",
+          "title": "Provide company joining details",
+          "detail": "Upload the company offer or a joining summary so dates, employer and role can be compared. This is an internal preparation request.",
+          "pages": [],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "08-korean-stay",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8d02292919d15107",
+        "latency_ms": 6861,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1239,
+          "total_tokens": 5302
+        },
+        "at": "2026-10-28T14:29:29.893Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "체류자격: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "체류기간 만료일: 2027.06.30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "All printed dates and letters are legible; signature area contains typed text and an underline mark in the designated area, so it is treated as visible rather than blank or uncertain. No blur, crop, or glare affects readability. Names are a"
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID 체류자격: E-7-1 체류기간 만료일: 2027.06.30 발급일: 2026.10.20 실제 신분증이 아닌 가상 평가 자료입니다.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed dates and letters are legible; no signature area exists on this page. No blur, crop, or glare affects readability. Names are redacted as [REDACTED]."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed dates and letters are legible; no signature area exists on this page. No blur, crop, or glare affects readability. Names are redacted as [REDACTED]."
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "09-multiple-pages",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-85ef47d536ef5aa8",
+        "latency_ms": 5253,
+        "usage": {
+          "prompt_tokens": 5279,
+          "completion_tokens": 1362,
+          "total_tokens": 6641
+        },
+        "at": "2026-10-28T14:29:35.180Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "contract:2",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:2",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:2",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 1. Role and responsibilities Build and maintain internal software services. 2. Work arrangement Full-time role. The parties will review the detailed policies. The start and signatures are on page 2. Page 1 of 2 - Fictional evaluation material",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed text is clear and legible; no signature area appears on this page."
+        },
+        {
+          "page_id": "contract:2",
+          "text": "AGREEMENT - START AND SIGNATURE SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "All printed text is clear and legible; the designated signature area contains the typed name QA Test Signer above a line."
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed text is clear and legible; no signature area appears on this page."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All printed text is clear and legible; no signature area appears on this page."
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "10-employer-mismatch",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "documents-employer"
+      ],
+      "actual_issues": [
+        "documents-employer"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8d92e72f507aec24",
+        "latency_ms": 5552,
+        "usage": {
+          "prompt_tokens": 3889,
+          "completion_tokens": 1087,
+          "total_tokens": 4976
+        },
+        "at": "2026-10-28T14:29:40.739Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Cedar Systems",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Cedar Systems"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed text and signature label are clear; a typed name appears in the signature area and is redacted as [REDACTED]. The page is fully legible and not partial."
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "All stay fields are legible; there is no signature area on this page."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA - NOT A GOVERNMENT ID Employer: Cedar Systems Job title: Software engineer Proposed employment start: 2026-11-10",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "The offer page is fully legible; it contains no signature area."
+        }
+      ],
+      "issues": [
+        {
+          "id": "documents-employer",
+          "owner": "reviewer",
+          "title": "Compare the employer names across documents",
+          "detail": "The uploaded pages use different employer names: Harbor Labs / Cedar Systems. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "11-role-mismatch",
+      "split": "holdout",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "documents-job_title"
+      ],
+      "actual_issues": [
+        "documents-job_title"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-ad2d0266c564c143",
+        "latency_ms": 4427,
+        "usage": {
+          "prompt_tokens": 3889,
+          "completion_tokens": 1141,
+          "total_tokens": 5030
+        },
+        "at": "2026-10-28T14:29:45.171Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "English teacher",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: English teacher"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed dates and letters are legible; a typed name appears in the designated signature area at the bottom of the page, so the signature field is not blank. No blur, crop, or glare affects the text or the signature area. The page is fully a"
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "Printed dates and letters are legible. The page contains no signature area, so signature is not applicable. There is no blur, crop, or glare affecting the relevant text."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA - NOT A GOVERNMENT ID Employer: Harbor Labs Job title: English teacher Proposed employment start: 2026-11-10",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "Printed dates and letters are legible. The page contains no signature area, so signature is not applicable. There is no blur, crop, or glare affecting the relevant text."
+        }
+      ],
+      "issues": [
+        {
+          "id": "documents-job_title",
+          "owner": "reviewer",
+          "title": "Compare the job titles across documents",
+          "detail": "The uploaded pages use different job titles: Software engineer / English teacher. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "12-alternate-layout",
+      "split": "holdout",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-18",
+          "actual": "2026-11-18",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-b2fdd3dc54e9b8da",
+        "latency_ms": 3636,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1151,
+          "total_tokens": 5214
+        },
+        "at": "2026-10-28T14:29:48.818Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-18",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employment commencement: November 18, 2026"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Cedar Systems",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer organization: Cedar Systems"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Data engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Position: Data engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-18",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employment commencement: 18 November 2026"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Cedar Systems",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer organization: Cedar Systems"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Data engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Position: Data engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "validated_fields": {
+        "status": {
+          "value": "E-7-1",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay status: E-7-1"
+            }
+          ]
+        },
+        "stay_expiry": {
+          "value": "2027-06-30",
+          "evidence": [
+            {
+              "page_id": "stay:1",
+              "quote": "Reported stay expiry: 2027-06-30"
+            }
+          ]
+        },
+        "contract_start": {
+          "value": "2026-11-18",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Employment commencement: November 18, 2026"
+            }
+          ]
+        }
+      },
+      "pages": [
+        {
+          "page_id": "contract:1",
+          "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Internal reference: QA-HOLDOUT Prepared: October 28, 2026 Position: Data engineer Employer organization: Cedar Systems Employment commencement: November 18, 2026 Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "visible",
+          "quality_reason": "Printed dates and letters are legible; a typed name appears in the designated signature area, so the signature is visible rather than blank. No blur, crop, or glare affects the relevant text. The page is not blank and not partial because it"
+        },
+        {
+          "page_id": "stay:1",
+          "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "Printed dates and letters are legible; no signature area is present on this page. The page is not blank or partial because it contains clear stay status and expiry text."
+        },
+        {
+          "page_id": "offer:1",
+          "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Internal reference: QA-HOLDOUT Prepared: October 28, 2026 Position: Data engineer Employer organization: Cedar Systems Employment commencement: 18 November 2026 Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+          "quality": "readable",
+          "signature": "not_applicable",
+          "quality_reason": "Printed dates and letters are legible; no signature area is present on this page. The page is not blank or partial because it contains clear employment commencement, employer, and position text."
+        }
+      ],
+      "issues": []
+    }
+  ]
+}

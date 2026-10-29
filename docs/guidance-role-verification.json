@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-28T16:26:51.904Z",
+  "synthetic": true,
+  "scope": "One reviewer-only issue set; real text-model call, not a broad guidance benchmark.",
+  "result": {
+    "message": "The company/reviewer will verify the start and expiry dates by reviewing the provided documentation, checking the reported expiry date, and comparing start dates across all submitted documents. Once these reviewer checks are complete, please await confirmation on whether additional input is needed from you regarding the original pages already submitted.",
+    "sources": [
+      {
+        "id": "workplace-form",
+        "title": "Application / Report Form — workplace changes",
+        "publisher": "Korea Immigration Service",
+        "url": "https://www.immigration.go.kr/bbs/immigration/212/561864/artclView.do",
+        "reviewed_at": "2026-10-28",
+        "summary": "The official guide lists change/addition of workplace and change/extension of status as separate application purposes. Use the current form and verify the procedure for the exact status and occupation."
+      },
+      {
+        "id": "immigration-1345",
+        "title": "Immigration Contact Center · 1345",
+        "publisher": "Korea Immigration Service",
+        "url": "https://www.immigration.go.kr/immigration_eng/1862/subview.do",
+        "reviewed_at": "2026-10-28",
+        "summary": "Ask about the exact status, occupation, employer change and required procedure. A contract or preparation review does not establish permission to work."
+      },
+      {
+        "id": "act-21",
+        "title": "Immigration Act · Article 21",
+        "publisher": "National Law Information Center",
+        "url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1031822861",
+        "reviewed_at": "2026-10-29",
+        "summary": "Workplace changes normally require prior permission. Only designated exceptions use reporting within 15 days. E-7 alone does not establish the exception."
+      },
+      {
+        "id": "e7-annex",
+        "title": "Enforcement Rule · Annex 5-2 · E-7, pp. 16–17",
+        "publisher": "Ministry of Justice / National Law Information Center",
+        "url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=170812943&bylClsCd=110201",
+        "reviewed_at": "2026-10-29",
+        "summary": "Annex amended 2024-12-24, linked from the rule effective 2026-10-23. Lists employment recommendation or necessity evidence, contract, conditional previous-employer consent, business/corporate registry and conditional guarantee. Administrative information sharing and case-specific additions or omissions can apply."
+      },
+      {
+        "id": "workplace-notice",
+        "title": "MOJ Notice 2020-212 · reporting exceptions",
+        "publisher": "Ministry of Justice",
+        "url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000190656&chrClsCd=010201",
+        "reviewed_at": "2026-10-29",
+        "summary": "Registration, occupational qualifications, excluded occupations and circumstances of leaving the previous employer affect the reporting exception. Confirm the current occupation classification and individual application."
+      }
+    ],
+    "proof": {
+      "mode": "live",
+      "provider": "Nebius Token Factory",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "http_status": 200,
+      "response_id": "chatcmpl-ad2d9e985647e448",
+      "latency_ms": 2871,
+      "usage": {
+        "prompt_tokens": 401,
+        "completion_tokens": 65,
+        "total_tokens": 466
+      },
+      "at": "2026-10-28T16:26:51.900Z"
+    }
+  }
+}

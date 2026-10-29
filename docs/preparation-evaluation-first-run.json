@@ -1,0 +1,1655 @@
+{
+  "synthetic": true,
+  "at": "2026-10-28T14:24:26.816Z",
+  "reference_date": "2026-10-28",
+  "summary": {
+    "attempted": 12,
+    "planned": 12,
+    "completed": 12,
+    "passed": 11,
+    "field_correct": 35,
+    "field_total": 36,
+    "expected_findings": 16,
+    "missed_findings": 0,
+    "unexpected_findings": 1,
+    "tokens": 61011,
+    "scope": "Synthetic document acceptance evaluation, not a real-user or legal-accuracy study.",
+    "partial_correction": {
+      "resolved": [
+        "contract-signature"
+      ],
+      "unconfirmed": [],
+      "remaining": [
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "new": []
+    }
+  },
+  "results": [
+    {
+      "id": "01-clean",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-ae87c07ab1b2dc5f",
+        "latency_ms": 8579,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1244,
+          "total_tokens": 5307
+        },
+        "at": "2026-10-28T14:23:31.706Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "02-three-problems",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2026-11-05",
+          "actual": "2026-11-05",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "contract-signature",
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "actual_issues": [
+        "contract-signature",
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-ae60347a33c1ce8e",
+        "latency_ms": 4620,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1171,
+          "total_tokens": 5234
+        },
+        "at": "2026-10-28T14:23:36.345Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-01",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-01"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "contract-signature",
+          "owner": "employee",
+          "title": "Check the unsigned contract",
+          "detail": "The signature area appears blank. Check the original and provide the agreed signed version, or ask your reviewer.",
+          "pages": [
+            "contract:1"
+          ],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "date-conflict",
+          "owner": "reviewer",
+          "title": "Review the start and expiry dates",
+          "detail": "The documents report a work start of 2026-11-10 and stay expiry of 2026-11-05. Compare the source documents and confirm the appropriate next step with the employee and responsible specialist.",
+          "pages": [
+            "stay:1",
+            "contract:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "expiry-reminder",
+          "owner": "reviewer",
+          "title": "Check the reported expiry",
+          "detail": "Reported expiry: 2026-11-05. Internal reminder based on 2026-10-28; this is not a statutory deadline.",
+          "pages": [
+            "stay:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "documents-start",
+          "owner": "reviewer",
+          "title": "Compare the start dates across documents",
+          "detail": "The uploaded pages use different start dates: 2026-11-10 / 2026-11-01. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "03-signature-only-fixed",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2026-11-05",
+          "actual": "2026-11-05",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "actual_issues": [
+        "date-conflict",
+        "documents-start",
+        "expiry-reminder"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8ec373fab09c35c1",
+        "latency_ms": 4843,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1225,
+          "total_tokens": 5288
+        },
+        "at": "2026-10-28T14:23:41.201Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-01",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-01"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "date-conflict",
+          "owner": "reviewer",
+          "title": "Review the start and expiry dates",
+          "detail": "The documents report a work start of 2026-11-10 and stay expiry of 2026-11-05. Compare the source documents and confirm the appropriate next step with the employee and responsible specialist.",
+          "pages": [
+            "stay:1",
+            "contract:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "expiry-reminder",
+          "owner": "reviewer",
+          "title": "Check the reported expiry",
+          "detail": "Reported expiry: 2026-11-05. Internal reminder based on 2026-10-28; this is not a statutory deadline.",
+          "pages": [
+            "stay:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "documents-start",
+          "owner": "reviewer",
+          "title": "Compare the start dates across documents",
+          "detail": "The uploaded pages use different start dates: 2026-11-10 / 2026-11-01. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "04-all-document-fixes",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8c4af2f63595499f",
+        "latency_ms": 5659,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1221,
+          "total_tokens": 5284
+        },
+        "at": "2026-10-28T14:23:46.864Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "05-unreadable-stay",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "field-status",
+        "field-stay_expiry",
+        "quality"
+      ],
+      "actual_issues": [
+        "field-status",
+        "field-stay_expiry",
+        "quality"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-ba5ea56b658524ce",
+        "latency_ms": 6817,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1201,
+          "total_tokens": 5264
+        },
+        "at": "2026-10-28T14:23:53.684Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "quality-stay:1",
+          "owner": "employee",
+          "title": "Upload a clearer page",
+          "detail": "The text on this page is unreadable. Use a clear, complete image with readable dates.",
+          "pages": [
+            "stay:1"
+          ],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-status",
+          "owner": "employee",
+          "title": "Confirm the reported stay status",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-stay_expiry",
+          "owner": "employee",
+          "title": "Confirm the reported stay expiry",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "06-missing-stay",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "",
+          "actual": "",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "document-stay",
+        "field-status",
+        "field-stay_expiry"
+      ],
+      "actual_issues": [
+        "document-stay",
+        "field-status",
+        "field-stay_expiry"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8e6511ef8fc7fdcf",
+        "latency_ms": 4729,
+        "usage": {
+          "prompt_tokens": 3021,
+          "completion_tokens": 972,
+          "total_tokens": 3993
+        },
+        "at": "2026-10-28T14:23:58.416Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "document-stay",
+          "owner": "employee",
+          "title": "Add the stay information document",
+          "detail": "This document is requested for this intake. Ask your reviewer if another document should be used.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-status",
+          "owner": "employee",
+          "title": "Confirm the reported stay status",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        },
+        {
+          "id": "field-stay_expiry",
+          "owner": "employee",
+          "title": "Confirm the reported stay expiry",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "07-missing-company",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "document-offer"
+      ],
+      "actual_issues": [
+        "document-offer"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-9931bd0c1464f56c",
+        "latency_ms": 3289,
+        "usage": {
+          "prompt_tokens": 2847,
+          "completion_tokens": 829,
+          "total_tokens": 3676
+        },
+        "at": "2026-10-28T14:24:01.707Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "document-offer",
+          "owner": "reviewer",
+          "title": "Provide company joining details",
+          "detail": "Upload the company offer or a joining summary so dates, employer and role can be compared. This is an internal preparation request.",
+          "pages": [],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "08-korean-stay",
+      "split": "development",
+      "passed": false,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "",
+          "correct": false
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [
+        "field-contract_start"
+      ],
+      "missed": [],
+      "unexpected": [
+        "field-contract_start"
+      ],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-b3747069512013bc",
+        "latency_ms": 5417,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1294,
+          "total_tokens": 5357
+        },
+        "at": "2026-10-28T14:24:07.126Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "field-contract_start",
+          "owner": "employee",
+          "title": "Confirm the proposed work start",
+          "detail": "This information could not be reliably located or may conflict. Upload the relevant clear page, or ask the reviewer for help.",
+          "pages": [],
+          "blocking": true,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "09-multiple-pages",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-86b0b4c052682210",
+        "latency_ms": 6144,
+        "usage": {
+          "prompt_tokens": 5279,
+          "completion_tokens": 1144,
+          "total_tokens": 6423
+        },
+        "at": "2026-10-28T14:24:13.275Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "contract:2",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:2",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": []
+    },
+    {
+      "id": "10-employer-mismatch",
+      "split": "development",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "documents-employer"
+      ],
+      "actual_issues": [
+        "documents-employer"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-a35fdfb105972819",
+        "latency_ms": 4630,
+        "usage": {
+          "prompt_tokens": 3889,
+          "completion_tokens": 1175,
+          "total_tokens": 5064
+        },
+        "at": "2026-10-28T14:24:17.912Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Cedar Systems",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Cedar Systems"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "documents-employer",
+          "owner": "reviewer",
+          "title": "Compare the employer names across documents",
+          "detail": "The uploaded pages use different employer names: Harbor Labs / Cedar Systems. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "11-role-mismatch",
+      "split": "holdout",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-10",
+          "actual": "2026-11-10",
+          "correct": true
+        }
+      },
+      "expected_issues": [
+        "documents-job_title"
+      ],
+      "actual_issues": [
+        "documents-job_title"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-89ade9c6a79f001c",
+        "latency_ms": 4092,
+        "usage": {
+          "prompt_tokens": 3889,
+          "completion_tokens": 1073,
+          "total_tokens": 4962
+        },
+        "at": "2026-10-28T14:24:22.008Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Software engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Job title: Software engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-10",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Proposed employment start: 2026-11-10"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Harbor Labs",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer: Harbor Labs"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "English teacher",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Job title: English teacher"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": [
+        {
+          "id": "documents-job_title",
+          "owner": "reviewer",
+          "title": "Compare the job titles across documents",
+          "detail": "The uploaded pages use different job titles: Software engineer / English teacher. Confirm the current agreed information; do not silently choose one value.",
+          "pages": [
+            "contract:1",
+            "offer:1"
+          ],
+          "blocking": false,
+          "basis": "Internal preparation check; not a legal requirement"
+        }
+      ]
+    },
+    {
+      "id": "12-alternate-layout",
+      "split": "holdout",
+      "passed": true,
+      "fields": {
+        "status": {
+          "expected": "E-7-1",
+          "actual": "E-7-1",
+          "correct": true
+        },
+        "stay_expiry": {
+          "expected": "2027-06-30",
+          "actual": "2027-06-30",
+          "correct": true
+        },
+        "contract_start": {
+          "expected": "2026-11-18",
+          "actual": "2026-11-18",
+          "correct": true
+        }
+      },
+      "expected_issues": [],
+      "actual_issues": [],
+      "missed": [],
+      "unexpected": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-ade909f18abdf170",
+        "latency_ms": 4802,
+        "usage": {
+          "prompt_tokens": 4063,
+          "completion_tokens": 1096,
+          "total_tokens": 5159
+        },
+        "at": "2026-10-28T14:24:26.813Z"
+      },
+      "observations": [
+        {
+          "page_id": "contract:1",
+          "start": {
+            "value": "2026-11-18",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employment commencement: November 18, 2026"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Cedar Systems",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Employer organization: Cedar Systems"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Data engineer",
+            "evidence": [
+              {
+                "page_id": "contract:1",
+                "quote": "Position: Data engineer"
+              }
+            ]
+          }
+        },
+        {
+          "page_id": "stay:1",
+          "start": {
+            "value": "",
+            "evidence": []
+          },
+          "employer": {
+            "value": "",
+            "evidence": []
+          },
+          "job_title": {
+            "value": "",
+            "evidence": []
+          }
+        },
+        {
+          "page_id": "offer:1",
+          "start": {
+            "value": "2026-11-18",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employment commencement: 18 November 2026"
+              }
+            ]
+          },
+          "employer": {
+            "value": "Cedar Systems",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Employer organization: Cedar Systems"
+              }
+            ]
+          },
+          "job_title": {
+            "value": "Data engineer",
+            "evidence": [
+              {
+                "page_id": "offer:1",
+                "quote": "Position: Data engineer"
+              }
+            ]
+          }
+        }
+      ],
+      "issues": []
+    }
+  ]
+}

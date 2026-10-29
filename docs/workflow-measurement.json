@@ -1,0 +1,367 @@
+{
+  "synthetic": true,
+  "operator": "AI browser agent",
+  "not_human_study": true,
+  "case_familiarity": true,
+  "timing_includes_tool_overhead": true,
+  "at": "2026-10-28T15:23:32.057Z",
+  "records": [
+    {
+      "trial": 1,
+      "id": "02-three-problems",
+      "mode": "manual",
+      "operator": "AI browser agent",
+      "elapsed_ms": 34885,
+      "pipeline_ms": 0,
+      "fields": {
+        "status": "E-7-1",
+        "expiry": "2026-11-05",
+        "contract_start": "2026-11-10",
+        "contract_employer": "Harbor Labs",
+        "contract_role": "Software engineer",
+        "offer_start": "2026-11-01",
+        "offer_employer": "Harbor Labs",
+        "offer_role": "Software engineer",
+        "signature": "blank"
+      },
+      "findings": [
+        "contract-signature",
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "events": [
+        {
+          "type": "page",
+          "category": "contract",
+          "ms": 0
+        },
+        {
+          "type": "field_input",
+          "field": "contract_start",
+          "ms": 17531
+        },
+        {
+          "type": "field_input",
+          "field": "contract_employer",
+          "ms": 17562
+        },
+        {
+          "type": "field_input",
+          "field": "contract_role",
+          "ms": 17569
+        },
+        {
+          "type": "field_input",
+          "field": "signature",
+          "ms": 17588
+        },
+        {
+          "type": "finding_input",
+          "field": "contract-signature",
+          "ms": 17646
+        },
+        {
+          "type": "page",
+          "category": "stay",
+          "ms": 17936
+        },
+        {
+          "type": "field_input",
+          "field": "status",
+          "ms": 25351
+        },
+        {
+          "type": "field_input",
+          "field": "expiry",
+          "ms": 25372
+        },
+        {
+          "type": "finding_input",
+          "field": "date-conflict",
+          "ms": 25448
+        },
+        {
+          "type": "finding_input",
+          "field": "expiry-reminder",
+          "ms": 25754
+        },
+        {
+          "type": "page",
+          "category": "offer",
+          "ms": 26016
+        },
+        {
+          "type": "field_input",
+          "field": "offer_start",
+          "ms": 34475
+        },
+        {
+          "type": "field_input",
+          "field": "offer_employer",
+          "ms": 34509
+        },
+        {
+          "type": "field_input",
+          "field": "offer_role",
+          "ms": 34530
+        },
+        {
+          "type": "finding_input",
+          "field": "documents-start",
+          "ms": 34612
+        }
+      ],
+      "field_correct": 9,
+      "field_total": 9,
+      "expected_findings": [
+        "contract-signature",
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "total_with_pipeline_ms": 34885,
+      "page_categories_seen": [
+        "contract",
+        "stay",
+        "offer"
+      ]
+    },
+    {
+      "trial": 2,
+      "id": "04-all-document-fixes",
+      "mode": "assisted",
+      "operator": "AI browser agent",
+      "elapsed_ms": 17773,
+      "pipeline_ms": 4563,
+      "fields": {
+        "status": "E-7-1",
+        "expiry": "2027-06-30",
+        "contract_start": "2026-11-10",
+        "contract_employer": "Harbor Labs",
+        "contract_role": "Software engineer",
+        "offer_start": "2026-11-10",
+        "offer_employer": "Harbor Labs",
+        "offer_role": "Software engineer",
+        "signature": "visible"
+      },
+      "findings": [],
+      "events": [
+        {
+          "type": "page",
+          "category": "contract",
+          "ms": 0
+        },
+        {
+          "type": "page",
+          "category": "stay",
+          "ms": 5818
+        },
+        {
+          "type": "page",
+          "category": "offer",
+          "ms": 11591
+        }
+      ],
+      "field_correct": 9,
+      "field_total": 9,
+      "expected_findings": [],
+      "missed": [],
+      "unexpected": [],
+      "total_with_pipeline_ms": 22336,
+      "page_categories_seen": [
+        "contract",
+        "stay",
+        "offer"
+      ]
+    },
+    {
+      "trial": 3,
+      "id": "02-three-problems",
+      "mode": "assisted",
+      "operator": "AI browser agent",
+      "elapsed_ms": 20628,
+      "pipeline_ms": 9481,
+      "fields": {
+        "status": "E-7-1",
+        "expiry": "2026-11-05",
+        "contract_start": "2026-11-10",
+        "contract_employer": "Harbor Labs",
+        "contract_role": "Software engineer",
+        "offer_start": "2026-11-01",
+        "offer_employer": "Harbor Labs",
+        "offer_role": "Software engineer",
+        "signature": "blank"
+      },
+      "findings": [
+        "contract-signature",
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "events": [
+        {
+          "type": "page",
+          "category": "contract",
+          "ms": 0
+        },
+        {
+          "type": "page",
+          "category": "stay",
+          "ms": 5852
+        },
+        {
+          "type": "page",
+          "category": "offer",
+          "ms": 14664
+        }
+      ],
+      "field_correct": 9,
+      "field_total": 9,
+      "expected_findings": [
+        "contract-signature",
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "missed": [],
+      "unexpected": [],
+      "total_with_pipeline_ms": 30109,
+      "page_categories_seen": [
+        "contract",
+        "stay",
+        "offer"
+      ]
+    },
+    {
+      "trial": 4,
+      "id": "04-all-document-fixes",
+      "mode": "manual",
+      "operator": "AI browser agent",
+      "elapsed_ms": 20713,
+      "pipeline_ms": 0,
+      "fields": {
+        "status": "E-7-1",
+        "expiry": "2027-06-30",
+        "contract_start": "2026-11-10",
+        "contract_employer": "Harbor Labs",
+        "contract_role": "Software engineer",
+        "offer_start": "2026-11-10",
+        "offer_employer": "Harbor Labs",
+        "offer_role": "Software engineer",
+        "signature": "visible"
+      },
+      "findings": [],
+      "events": [
+        {
+          "type": "page",
+          "category": "contract",
+          "ms": 0
+        },
+        {
+          "type": "field_input",
+          "field": "contract_start",
+          "ms": 6952
+        },
+        {
+          "type": "field_input",
+          "field": "contract_employer",
+          "ms": 6982
+        },
+        {
+          "type": "field_input",
+          "field": "contract_role",
+          "ms": 7006
+        },
+        {
+          "type": "field_input",
+          "field": "signature",
+          "ms": 7016
+        },
+        {
+          "type": "page",
+          "category": "stay",
+          "ms": 7079
+        },
+        {
+          "type": "field_input",
+          "field": "status",
+          "ms": 13182
+        },
+        {
+          "type": "field_input",
+          "field": "expiry",
+          "ms": 13193
+        },
+        {
+          "type": "page",
+          "category": "offer",
+          "ms": 13246
+        },
+        {
+          "type": "field_input",
+          "field": "offer_start",
+          "ms": 20581
+        },
+        {
+          "type": "field_input",
+          "field": "offer_employer",
+          "ms": 20614
+        },
+        {
+          "type": "field_input",
+          "field": "offer_role",
+          "ms": 20659
+        }
+      ],
+      "field_correct": 9,
+      "field_total": 9,
+      "expected_findings": [],
+      "missed": [],
+      "unexpected": [],
+      "total_with_pipeline_ms": 20713,
+      "page_categories_seen": [
+        "contract",
+        "stay",
+        "offer"
+      ]
+    }
+  ],
+  "summary": {
+    "manual": {
+      "trials": 2,
+      "review_ms": 55598,
+      "pipeline_ms": 0,
+      "total_with_pipeline_ms": 55598,
+      "field_entries": 18,
+      "field_correct": 18,
+      "field_total": 18,
+      "missed": [],
+      "unexpected": [],
+      "initial_correction_batches": 1
+    },
+    "assisted": {
+      "trials": 2,
+      "review_ms": 38401,
+      "pipeline_ms": 14044,
+      "total_with_pipeline_ms": 52445,
+      "field_entries": 0,
+      "field_correct": 18,
+      "field_total": 18,
+      "missed": [],
+      "unexpected": [],
+      "initial_correction_batches": 1
+    }
+  },
+  "limitations": [
+    "One AI agent operator, not a real employee or HR professional.",
+    "Same known synthetic case in initial and corrected states; not independent cases.",
+    "Fixed guided checklist; operator knew expected problems.",
+    "Browser tool latency and model reasoning are included; not human task time.",
+    "Assisted model pipeline was precomputed and added separately. Upload, account and approval work excluded in both arms.",
+    "One correction batch is the structured output grouping, not a measured real-world messaging round trip.",
+    "No defensible human time-saving, missed-error reduction, or back-and-forth reduction claim."
+  ]
+}

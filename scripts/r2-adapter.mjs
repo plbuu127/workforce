@@ -1,0 +1,5 @@
+// Local/test file storage only. Never imported by the hosted Worker.
+import {mkdir,writeFile,readFile,unlink} from 'node:fs/promises';
+import {resolve,dirname} from 'node:path';
+export function memoryBucket(){const objects=new Map();return {async put(k,v){objects.set(k,new Uint8Array(v));},async get(k){const v=objects.get(k);return v?{body:v,arrayBuffer:async()=>v.slice().buffer}:null;},async delete(keys){for(const k of Array.isArray(keys)?keys:[keys])objects.delete(k);},count:()=>objects.size};}
+export function localBucket(root){function path(k){if(!/^intake\/[a-f0-9-]+\/[a-f0-9-]+\/(original|page-(?:[0-9]|1[01]))$/.test(k))throw new Error('Invalid local object key');return resolve(root,k);}return {async put(k,v){const f=path(k);await mkdir(dirname(f),{recursive:true});await writeFile(f,new Uint8Array(v));},async get(k){try{const v=await readFile(path(k));return {body:v,arrayBuffer:async()=>v.buffer.slice(v.byteOffset,v.byteOffset+v.byteLength)};}catch(e){if(e.code==='ENOENT')return null;throw e;}},async delete(keys){for(const k of Array.isArray(keys)?keys:[keys])await unlink(path(k)).catch(e=>{if(e.code!=='ENOENT')throw e;});}};}

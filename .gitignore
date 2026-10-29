@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.sites-runtime/
+.preview-data/
+work-*.json
+*.tar.gz
+dist/
+
+.eval-results/

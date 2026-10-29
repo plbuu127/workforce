@@ -1,0 +1,1 @@
+ALTER TABLE `workforce_companies` ADD `applicant_email` text;

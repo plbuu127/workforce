@@ -1,0 +1,101 @@
+import assert from 'node:assert/strict';
+import worker from '../dist/server/index.js';
+import {localDatabase} from './sqlite-adapter.mjs';
+import {memoryBucket} from './r2-adapter.mjs';
+import {application} from './approved-fixture.mjs';
+import {VISION_MODEL} from '../dist/server/intake-ai.js';
+const DB=await localDatabase(),env={DB,BUCKET:memoryBucket(),WORKFORCE_OPERATOR_USER_ID:'operator'},origin='https://boundary.test';let n=0;
+const check=(v,m)=>{assert.ok(v,m);n++;};
+async function call(path,user,b,email=user+'@example.test') {const r=await worker.fetch(new Request(origin+'/api/intake'+path,{method:b===undefined?'GET':'POST',headers:{origin,'content-type':'application/json',...(user?{'oai-authenticated-user-id':user,'oai-authenticated-user-email':email}:{})},body:b===undefined?undefined:JSON.stringify(b)}),env);return {status:r.status,body:await r.json()};}
+const create=(companyId,more={})=>({id:crypto.randomUUID(),name:'Synthetic security case',company_id:companyId,employee_email:'employee@example.test',...more});
+const decision=(revision,status='approved')=>({revision,status,company_confirmed:true,authority_confirmed:true,note:'LOCAL FIXTURE: independently verified synthetic company and requester authority for automated tests.'});
+const company=async()=> (await call('/companies','owner',{id:crypto.randomUUID(),name:'Synthetic Company',member_name:'Test Owner',...application,verification_status:'approved',is_operator:true})).body.company;
+let cookie='';async function demo(b,cookieValue=cookie,extra={}){const r=await worker.fetch(new Request(origin+'/api/demo',{method:b===undefined?'GET':'POST',headers:{origin,'content-type':'application/json','cf-connecting-ip':'192.0.2.4',cookie:cookieValue,...extra},body:b===undefined?undefined:JSON.stringify(b)}),env);return {status:r.status,body:await r.json(),cookie:r.headers.get('set-cookie')};}
+const originalFetch=globalThis.fetch;
+try{
+ const c=await company();check((await call('/operator/companies','operator')).body.applications[0].applicant_email==='owner@example.test','operator sees authenticated applicant, not just claimed company contact');
+ check(c.verification_status==='pending','forged approved flag cannot activate company');
+ check((await call('/operator/companies','owner')).status===403,'company owner is not platform operator');
+ check((await call('/operator/companies',null)).status===401,'operator requires sign in');
+ for(const b of [create(c.id),create(c.id,{self_test:true}),create(c.id,{demo:true}),create(undefined,{self_test:true}),create(null)])check((await call('/cases','owner',b)).status===403,'pending or companyless bypass blocked');
+ check((await call('/companies/'+c.id+'/invites','owner',{revision:c.revision,email:'colleague@example.test',role:'admin'})).status===403,'pending company cannot grant team rights');
+ check((await call('/operator/companies/'+c.id,'owner',decision(c.revision))).status===403,'self-approval denied');
+ check((await call('/operator/companies/'+c.id,'operator',{...decision(c.revision),authority_confirmed:false})).status===400,'independent authority confirmation required');
+ check((await call('/operator/companies/'+c.id,'operator',decision(c.revision))).status===200,'designated operator approves fixture');
+ check((await call('/operator/companies/'+c.id,'operator',decision(c.revision))).status===409,'stale operator decision rejected');
+ for(const flags of [{self_test:true},{demo:true}])check((await call('/cases','owner',create(c.id,flags))).status===403,'approved company cannot use self-test API bypass');
+ check((await call('/cases','owner',create(c.id,{employee_email:''}))).status===400,'employee recipient required');
+ const made=await call('/cases','owner',create(c.id));check(made.status===201,'verified company creates real workflow case');let packet=made.body.case;
+ check((await call('/join','stranger',{token:made.body.invite})).status===403,'wrong email cannot claim leaked link');
+ check((await call('/join','employee',{token:made.body.invite},'')).status===403,'missing email cannot claim link');
+ const joined=await call('/join','employee',{token:made.body.invite},' EMPLOYEE@EXAMPLE.TEST ');check(joined.status===200,'correct normalized email joins after wrong attempts');packet=joined.body.case;
+ check((await call('/join','employee',{token:made.body.invite})).status===404,'single-use invitation preserved');
+ check((await call('/cases/'+packet.id+'/approve','employee',{revision:packet.revision})).status===403,'employee cannot become reviewer');
+ const waiting=await call('/cases','owner',create(c.id)),renew=await call('/cases/'+waiting.body.case.id+'/invite','owner',{revision:1,employee_email:'replacement@example.test'});check(renew.status===200,'renewal names new recipient');
+ check((await call('/join','employee',{token:renew.body.invite})).status===403,'old recipient cannot claim renewed invitation');
+ check((await call('/join','replacement',{token:renew.body.invite})).status===200,'new recipient can join');
+ let overview=(await call('/companies/'+c.id,'owner')).body;
+ const team=await call('/companies/'+c.id+'/invites','owner',{revision:overview.company.revision,email:'staff@example.test',role:'reviewer'});check(team.status===200,'approved team invitation works');
+ const unclaimed=await call('/cases','owner',create(c.id));
+ overview=(await call('/companies/'+c.id,'owner')).body;
+ check((await call('/operator/companies/'+c.id,'operator',decision(overview.company.revision,'suspended'))).status===200,'operator suspends company');
+ for(const user of ['owner','employee'])for(const suffix of ['', '/audit','/export','/files/'+crypto.randomUUID()+'/original'])check((await call('/cases/'+packet.id+suffix,user)).status===404,'suspended data boundary blocks '+suffix);
+ check((await call('','employee')).body.cases.length===0,'suspended cases not listed');
+ check((await call('/cases/'+packet.id+'/submit','employee',{revision:packet.revision,consent:true})).status===404,'suspended workflow blocked');
+ check((await call('/join','employee',{token:unclaimed.body.invite})).status===403,'preexisting employee invitation does not bypass suspension');
+ check((await call('/companies/join','staff',{token:team.body.team_invite,member_name:'Staff Person'})).status===403,'preexisting staff invitation does not bypass suspension');
+ check((await call('/companies/invitation','staff',{token:team.body.team_invite})).status===403,'suspended team preview blocked');
+ check((await call('/companies/'+c.id,'owner')).body.cases===undefined,'pending/suspended admin sees no case metadata');
+ // Legacy nullable company rows and self-test cases stay stored, but inaccessible.
+ for(const [legacyCompany,state] of [[null,{self_test:false}], [c.id,{self_test:true}]]){
+  const id=crypto.randomUUID();await DB.prepare('INSERT INTO workforce_intake_cases(id,reviewer_id,employee_id,company_id,revision,state_json,event_json,previous_hash,event_hash,created_at,updated_at) VALUES(?,?,?, ?,1,?, ?,?,?,?,?)').bind(id,'owner','employee',legacyCompany,JSON.stringify({name:'Legacy fixture',stage:'collecting',...state}),'{}','','fixture','2026-01-01','2026-01-01').run();check((await call('/cases/'+id,'employee')).status===404,'legacy unsafe workflow inaccessible');
+ }
+ overview=(await call('/companies/'+c.id,'owner')).body;await call('/operator/companies/'+c.id,'operator',decision(overview.company.revision));
+ check((await call('/cases/'+packet.id,'employee')).status===200,'restored verified company retains legitimate records');
+ check((await call('','employee')).body.cases.every(x=>!x.state.self_test),'legacy self-test remains quarantined even after company approval');
+ // Inject a suspension between authorization read and write to exercise the CAS.
+ const pending=await call('/cases','owner',create(c.id));const prepare=DB.prepare;let raced=false;
+ DB.prepare=sql=>{const wrap=stmt=>({ ...stmt,bind(...args){return wrap(stmt.bind(...args));},async run(){if(!raced&&sql.startsWith('UPDATE workforce_intake_cases SET revision')){raced=true;await prepare("UPDATE workforce_companies SET verification_status='suspended' WHERE id=?").bind(c.id).run();}return stmt.run();}});return wrap(prepare(sql));};
+ check((await call('/join','employee',{token:pending.body.invite})).status===409,'company suspension during join closes mutation race');DB.prepare=prepare;
+ check((await DB.prepare('SELECT employee_id FROM workforce_intake_cases WHERE id=?').bind(pending.body.case.id).first()).employee_id===null,'race did not consume invite or bind employee');
+ check((await demo()).body.session===null,'anonymous session starts empty');
+ const started=await demo({action:'start'});cookie=started.cookie.split(';')[0];let s=started.body.session;
+ check(started.status===201&&/HttpOnly/.test(started.cookie)&&/Secure/.test(started.cookie),'isolated secure HttpOnly sandbox session');
+ check((await demo(undefined,'wf_demo='+'a'.repeat(64))).body.session===null,'guessed sandbox cookie sees no other session');
+ check((await demo({action:'analyze',revision:s.revision,consent:true,company_id:c.id})).status===400,'arbitrary company identifiers rejected');
+ check((await demo({action:'analyze',revision:s.revision,consent:true,url:'https://attacker.test'})).status===400,'arbitrary external documents rejected');
+ check((await demo({action:'start'},cookie,{origin:'https://attacker.test'})).status===403,'cross-site sandbox mutation denied');
+ check((await demo({action:'analyze',revision:s.revision,consent:true})).status===503,'unconfigured AI never becomes simulated success');
+ check((await demo({action:'approve',revision:s.revision,reviewed:true})).status===409,'demo approval cannot skip analysis');
+ env.NEBIUS_API_KEY='mock-only';env.NEBIUS_AI_ENABLED='true';let phase=0,vision=0;
+ globalThis.fetch=async(url,opt)=>{const q=JSON.parse(opt.body);let value;if(q.model===VISION_MODEL){phase=vision++;const f=(id,value,quote)=>({value,evidence:value?[{page_id:id,quote}]:[]});const pages=q.messages[1].content.filter(x=>x.type==='text').map(x=>{const id=x.text.match(/Page ID: ([^;]+)/)[1],category=id.split(':')[0];return {page_id:id,quality:'readable',signature:category==='contract'?(phase===0?'blank':'visible'):'not_applicable',text:category==='stay'?`Status E-7-1\nExpiry ${phase===2?'2027-06-30':'2026-11-05'}`:`Start ${category==='offer'&&phase!==2?'2026-11-12':'2026-11-10'}\nEmployer Example Labs\nJob Software engineer`};});value={pages,fields:{status:f('stay:1','E-7-1','Status E-7-1'),stay_expiry:f('stay:1',phase===2?'2027-06-30':'2026-11-05','Expiry '+(phase===2?'2027-06-30':'2026-11-05')),contract_start:f('contract:1','2026-11-10','Start 2026-11-10')},document_fields:pages.map(p=>({page_id:p.page_id,start:f(p.page_id,p.page_id.startsWith('stay')?'':p.text.slice(6,16),p.text.split('\n')[0]),employer:f(p.page_id,p.page_id.startsWith('stay')?'':'Example Labs','Employer Example Labs'),job_title:f(p.page_id,p.page_id.startsWith('stay')?'':'Software engineer','Job Software engineer')}))};}else value={message:'Compare the reported findings with the source pages. Your reviewer will confirm the company details and the next preparation steps.'};return Response.json({model:q.model,id:'MOCK-not-live-evidence',choices:[{finish_reason:'stop',message:{content:JSON.stringify(value)}}]});};
+ s=(await demo({action:'analyze',revision:s.revision,consent:true})).body.session;check(s.analysis.issues.some(x=>x.id==='contract-signature')&&s.stage==='needs_changes','demo analyzes originals with explicit mock transport');
+ s=(await demo({action:'guidance',revision:s.revision,consent:true})).body.session;check(!!s.analysis.guidance.proof&&s.stage==='needs_changes','guidance-only retry retains findings and review state');
+ for(const action of ['signed','corrected']){s=(await demo({action:'request_changes',revision:s.revision})).body.session;s=(await demo({action,revision:s.revision,consent:true})).body.session;check(!!s.analysis,'demo reanalysis '+action);if(action==='signed')check(s.analysis.comparison.resolved.includes('contract-signature')&&s.analysis.comparison.remaining.includes('date-conflict'),'signature repair does not erase date conflict');}
+ check(s.analysis.issues.length===0&&s.stage==='ready_for_review','corrected demo becomes reviewable');
+ check((await demo({action:'request_changes',revision:s.revision})).status===409,'final demo cannot enter an unrecoverable change-request state');
+ s=(await demo({action:'approve',revision:s.revision,reviewed:true})).body.session;check(s.stage==='approved'&&s.events.some(x=>x.role==='Reviewer'),'sample reviewer decision recorded');
+ const completed=s,usageBefore=(await DB.prepare('SELECT scope,day,calls FROM workforce_ai_usage ORDER BY scope').all()).results;
+ s=(await demo({action:'restart',revision:s.revision})).body.session;
+ check(s.stage==='collecting'&&s.phase===0&&s.analysis===null&&s.history.length===0&&s.events.length===1,'restart clears only the synthetic packet and its displayed history');
+ check(s.documents[0].original.includes('unsigned')&&s.revision>completed.revision,'restart restores original packet with a new revision');
+ check(s.attempts===completed.attempts&&s.guidance_attempts===completed.guidance_attempts&&s.expires_at===completed.expires_at,'restart preserves analysis, guidance allowance and session expiry');
+ check(JSON.stringify((await DB.prepare('SELECT scope,day,calls FROM workforce_ai_usage ORDER BY scope').all()).results)===JSON.stringify(usageBefore),'restart neither invokes AI nor resets daily usage');
+ check((await demo({action:'restart',revision:completed.revision})).status===409,'stale restart cannot overwrite another tab');
+ check((await demo({action:'restart',revision:s.revision},'')).status===401,'restart needs its existing anonymous session');
+ const savedRow=await DB.prepare('SELECT * FROM workforce_demo_sessions').first(),savedState=JSON.parse(savedRow.state_json);
+ await DB.prepare('UPDATE workforce_demo_sessions SET state_json=? WHERE token_hash=?').bind(JSON.stringify({...savedState,stage:'processing',started_at:new Date().toISOString()}),savedRow.token_hash).run();
+ check((await demo({action:'restart',revision:s.revision})).status===409,'restart cannot race an active analysis');
+ await DB.prepare('UPDATE workforce_demo_sessions SET state_json=? WHERE token_hash=?').bind(JSON.stringify({...savedState,attempts:6}),savedRow.token_hash).run();
+ s=(await demo({action:'restart',revision:s.revision})).body.session;
+ check((await demo({action:'analyze',revision:s.revision,consent:true})).status===429,'restart cannot renew exhausted analysis allowance');
+ check((await demo(undefined,'')).body.session===null,'another browser cannot enumerate demo session');
+ check((await DB.prepare('SELECT count(*) AS n FROM workforce_companies').first()).n===1,'demo writes no real companies');
+ check((await DB.prepare("SELECT count(*) AS n FROM workforce_company_members WHERE user_id NOT IN ('owner')").first()).n===0,'demo creates no staff memberships');
+ const seeded=Array.from({length:200},(_,i)=>({id:crypto.randomUUID(),at:new Date(Date.UTC(2020,0,1,0,0,i)).toISOString()}));await DB.batch(seeded.map(x=>DB.prepare('INSERT INTO workforce_companies(id,name,owner_id,revision,operation_id,created_at) VALUES(?,?,?,1,?,?)').bind(x.id,'Pagination fixture','owner-'+x.id,crypto.randomUUID(),x.at)));
+ const page1=(await call('/operator/companies','operator')).body;check(page1.applications.length===100&&!!page1.next_cursor,'operator listing is bounded with continuation');
+ const page2=(await call('/operator/companies?before='+page1.next_cursor,'operator')).body,page3=(await call('/operator/companies?before='+page2.next_cursor,'operator')).body;
+ check(new Set([...page1.applications,...page2.applications,...page3.applications].map(x=>x.id)).size===201,'all applications remain reachable without gaps or duplicates');
+ check(page3.applications.some(x=>x.id===seeded[0].id)&&page3.next_cursor===null,'oldest application remains available for review or suspension');
+ console.log(`Verification & demo: ${n} assertions passed. Approved-company gates, operator authority, recipient binding, legacy quarantine, CAS race, isolated sample workflow. AI mocked; not live evidence.`);
+}finally{globalThis.fetch=originalFetch;DB.close();}

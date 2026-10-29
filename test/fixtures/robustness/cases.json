@@ -1,0 +1,390 @@
+{
+  "synthetic": true,
+  "reference_date": "2026-10-29",
+  "frozen_before_first_live_run": true,
+  "cases": [
+    {
+      "id": "01-last-page-of-eight",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-eight-pages-1.jpg",
+            "contract-eight-pages-2.jpg",
+            "contract-eight-pages-3.jpg",
+            "contract-eight-pages-4.jpg",
+            "contract-eight-pages-5.jpg",
+            "contract-eight-pages-6.jpg",
+            "contract-eight-pages-7.jpg",
+            "contract-eight-pages-8.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-grid.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-12-01"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "02-conflict-across-twelve",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-twelve-conflicting-01.jpg",
+            "contract-twelve-conflicting-02.jpg",
+            "contract-twelve-conflicting-03.jpg",
+            "contract-twelve-conflicting-04.jpg",
+            "contract-twelve-conflicting-05.jpg",
+            "contract-twelve-conflicting-06.jpg",
+            "contract-twelve-conflicting-07.jpg",
+            "contract-twelve-conflicting-08.jpg",
+            "contract-twelve-conflicting-09.jpg",
+            "contract-twelve-conflicting-10.jpg",
+            "contract-twelve-conflicting-11.jpg",
+            "contract-twelve-conflicting-12.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-grid.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": ""
+        },
+        "issues": [
+          "field-contract_start",
+          "documents-start"
+        ]
+      }
+    },
+    {
+      "id": "03-dense-layout",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-dense-two-pages-1.jpg",
+            "contract-dense-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-grid.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-12-01"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "04-tilted-low-contrast",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-dense-two-pages-1.jpg",
+            "contract-dense-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-photo-tilted.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-12-01"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "05-expiry-absent",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-dense-two-pages-1.jpg",
+            "contract-dense-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-no-expiry.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "",
+          "contract_start": "2026-12-01"
+        },
+        "issues": [
+          "field-stay_expiry"
+        ]
+      }
+    },
+    {
+      "id": "06-document-instruction",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-dense-two-pages-1.jpg",
+            "contract-dense-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-injection.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-12-01"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "07-korean-date",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-dense-two-pages-1.jpg",
+            "contract-dense-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-korean-grid.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-12-01"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "08-ambiguous-date",
+      "split": "new_synthetic_acceptance",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Product designer",
+        "job_changed": "no",
+        "registered": "yes",
+        "previous_end": "completed"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-dense-two-pages-1.jpg",
+            "contract-dense-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-ambiguous-date.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-joining-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "",
+          "contract_start": "2026-12-01"
+        },
+        "issues": [
+          "field-stay_expiry"
+        ]
+      }
+    }
+  ]
+}

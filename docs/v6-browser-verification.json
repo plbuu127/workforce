@@ -1,0 +1,150 @@
+{
+  "at": "2026-10-28T16:23:48.404Z",
+  "environment": "loopback preview; real NVIDIA inference on Nebius",
+  "operator": "AI agent; one account switching employee/reviewer views; fictional files only",
+  "case_id": "e321231d-7fc0-4926-94f9-f85e09a0e59d",
+  "version": 3,
+  "stage": "approved",
+  "audit_events": 19,
+  "audit_valid": true,
+  "versions": [
+    {
+      "version": 1,
+      "findings": [
+        "contract-signature",
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-b4b7cddea37df50f",
+        "latency_ms": 7777,
+        "usage": {
+          "prompt_tokens": 6341,
+          "completion_tokens": 1647,
+          "total_tokens": 7988
+        },
+        "at": "2026-10-28T16:18:22.575Z"
+      },
+      "guidance_proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "http_status": 200,
+        "response_id": "chatcmpl-bbd9e0ec9e9a53ee",
+        "latency_ms": 847,
+        "usage": {
+          "prompt_tokens": 352,
+          "completion_tokens": 75,
+          "total_tokens": 427
+        },
+        "at": "2026-10-28T16:18:23.430Z"
+      },
+      "comparison": {
+        "resolved": [],
+        "unconfirmed": [],
+        "remaining": [],
+        "new": [
+          "contract-signature",
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ]
+      }
+    },
+    {
+      "version": 2,
+      "findings": [
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8a4e756c65ec4d35",
+        "latency_ms": 7265,
+        "usage": {
+          "prompt_tokens": 6342,
+          "completion_tokens": 1696,
+          "total_tokens": 8038
+        },
+        "at": "2026-10-28T16:18:42.522Z"
+      },
+      "guidance_proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "http_status": 200,
+        "response_id": "chatcmpl-965e2bd9111d3771",
+        "latency_ms": 1675,
+        "usage": {
+          "prompt_tokens": 340,
+          "completion_tokens": 50,
+          "total_tokens": 390
+        },
+        "at": "2026-10-28T16:18:44.202Z"
+      },
+      "comparison": {
+        "resolved": [
+          "contract-signature"
+        ],
+        "unconfirmed": [],
+        "remaining": [
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ],
+        "new": []
+      }
+    },
+    {
+      "version": 3,
+      "findings": [],
+      "proof": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-922f3fbeecee636a",
+        "latency_ms": 7608,
+        "usage": {
+          "prompt_tokens": 6339,
+          "completion_tokens": 1678,
+          "total_tokens": 8017
+        },
+        "at": "2026-10-28T16:20:45.610Z"
+      },
+      "comparison": {
+        "resolved": [
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ],
+        "unconfirmed": [],
+        "remaining": [],
+        "new": []
+      }
+    }
+  ],
+  "checks": {
+    "sample_pdf_and_photo_loaded": true,
+    "partial_fix_only_resolved_signature": true,
+    "request_changes_delivered": true,
+    "combined_draft_saved": true,
+    "missing_resolution_blocked": true,
+    "failed_approval_preserved_fields": true,
+    "approved_external_followup_visible": true,
+    "json_export": true,
+    "html_export": true
+  },
+  "external_followups": [
+    "occupation-route"
+  ]
+}

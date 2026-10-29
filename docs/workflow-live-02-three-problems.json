@@ -1,0 +1,226 @@
+{
+  "id": "02-three-problems",
+  "reading": {
+    "pages": [
+      {
+        "page_id": "contract:1",
+        "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature Fictional evaluation material - no personal identifiers",
+        "quality": "readable",
+        "signature": "blank",
+        "quality_reason": "All printed dates and letters are legible; the signature area is clearly visible and empty, with no marks present in the designated area. The page is not blank because it contains substantial relevant text and a designated signature area, a"
+      },
+      {
+        "page_id": "stay:1",
+        "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2026-11-05 Record issued: 2026-10-20 No personal identifiers included.",
+        "quality": "readable",
+        "signature": "not_applicable",
+        "quality_reason": "All printed dates and letters are legible; there is no signature area on this page, so the signature field is not applicable. The page is not blank because it contains stay status and stay expiry information."
+      },
+      {
+        "page_id": "offer:1",
+        "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-01 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+        "quality": "readable",
+        "signature": "not_applicable",
+        "quality_reason": "All printed dates and letters are legible; there is no signature area on this page, so the signature field is not applicable. The page is not blank because it contains employer, job title, proposed employment start, and contract end details"
+      }
+    ],
+    "fields": {
+      "status": {
+        "value": "E-7-1",
+        "evidence": [
+          {
+            "page_id": "stay:1",
+            "quote": "Reported stay status: E-7-1"
+          }
+        ]
+      },
+      "stay_expiry": {
+        "value": "2026-11-05",
+        "evidence": [
+          {
+            "page_id": "stay:1",
+            "quote": "Reported stay expiry: 2026-11-05"
+          }
+        ]
+      },
+      "contract_start": {
+        "value": "2026-11-10",
+        "evidence": [
+          {
+            "page_id": "contract:1",
+            "quote": "Proposed employment start: 2026-11-10"
+          }
+        ]
+      }
+    },
+    "document_fields": [
+      {
+        "page_id": "contract:1",
+        "start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        },
+        "employer": {
+          "value": "Harbor Labs",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Employer: Harbor Labs"
+            }
+          ]
+        },
+        "job_title": {
+          "value": "Software engineer",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Job title: Software engineer"
+            }
+          ]
+        }
+      },
+      {
+        "page_id": "stay:1",
+        "start": {
+          "value": "",
+          "evidence": []
+        },
+        "employer": {
+          "value": "",
+          "evidence": []
+        },
+        "job_title": {
+          "value": "",
+          "evidence": []
+        }
+      },
+      {
+        "page_id": "offer:1",
+        "start": {
+          "value": "2026-11-01",
+          "evidence": [
+            {
+              "page_id": "offer:1",
+              "quote": "Proposed employment start: 2026-11-01"
+            }
+          ]
+        },
+        "employer": {
+          "value": "Harbor Labs",
+          "evidence": [
+            {
+              "page_id": "offer:1",
+              "quote": "Employer: Harbor Labs"
+            }
+          ]
+        },
+        "job_title": {
+          "value": "Software engineer",
+          "evidence": [
+            {
+              "page_id": "offer:1",
+              "quote": "Job title: Software engineer"
+            }
+          ]
+        }
+      }
+    ],
+    "proof": {
+      "mode": "live",
+      "provider": "Nebius Token Factory",
+      "model": "nvidia/Nemotron-3.5-Super-VL",
+      "http_status": 200,
+      "response_id": "chatcmpl-b8027190e2840c7d",
+      "latency_ms": 8195,
+      "usage": {
+        "prompt_tokens": 4063,
+        "completion_tokens": 1225,
+        "total_tokens": 5288
+      },
+      "at": "2026-10-28T15:20:55.286Z"
+    }
+  },
+  "issues": [
+    {
+      "id": "contract-signature",
+      "owner": "employee",
+      "title": "Check the unsigned contract",
+      "detail": "The signature area appears blank. Check the original and provide the agreed signed version, or ask your reviewer.",
+      "pages": [
+        "contract:1"
+      ],
+      "blocking": true,
+      "basis": "Internal preparation check; not a legal requirement"
+    },
+    {
+      "id": "date-conflict",
+      "owner": "reviewer",
+      "title": "Review the start and expiry dates",
+      "detail": "The documents report a work start of 2026-11-10 and stay expiry of 2026-11-05. Compare the source documents and confirm the appropriate next step with the employee and responsible specialist.",
+      "pages": [
+        "stay:1",
+        "contract:1"
+      ],
+      "blocking": false,
+      "basis": "Internal preparation check; not a legal requirement"
+    },
+    {
+      "id": "expiry-reminder",
+      "owner": "reviewer",
+      "title": "Check the reported expiry",
+      "detail": "Reported expiry: 2026-11-05. Internal reminder based on 2026-10-28; this is not a statutory deadline.",
+      "pages": [
+        "stay:1"
+      ],
+      "blocking": false,
+      "basis": "Internal preparation check; not a legal requirement"
+    },
+    {
+      "id": "documents-start",
+      "owner": "reviewer",
+      "title": "Compare the start dates across documents",
+      "detail": "The uploaded pages use different start dates: 2026-11-10 / 2026-11-01. Confirm the current agreed information; do not silently choose one value.",
+      "pages": [
+        "contract:1",
+        "offer:1"
+      ],
+      "blocking": false,
+      "basis": "Internal preparation check; not a legal requirement"
+    }
+  ],
+  "guidance": {
+    "message": "You need to review the agreed terms in the unsigned contract and either upload a signed copy or contact your reviewer if clarification is needed. The reviewer will verify the start and expiry dates, confirm the reported expiry, and compare start dates across documents. Once these steps are completed, the packet will be ready for human review of the original pages.",
+    "sources": [
+      {
+        "id": "immigration-1345",
+        "title": "Immigration Contact Center · 1345",
+        "publisher": "Ministry of Justice · Korea Immigration Service",
+        "url": "https://www.immigration.go.kr/immigration_eng/1862/subview.do",
+        "reviewed_at": "2026-10-28",
+        "kind": "reviewed_summary",
+        "summary": "Official multilingual counseling route for immigration and living-in-Korea questions. Ask about the exact status, procedure and personal circumstances."
+      }
+    ],
+    "proof": {
+      "mode": "live",
+      "provider": "Nebius Token Factory",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "http_status": 200,
+      "response_id": "chatcmpl-bd6d1d3996cf5684",
+      "latency_ms": 1269,
+      "usage": {
+        "prompt_tokens": 352,
+        "completion_tokens": 74,
+        "total_tokens": 426
+      },
+      "at": "2026-10-28T15:20:56.565Z"
+    }
+  },
+  "guidance_error": null,
+  "pipeline_ms": 9481
+}

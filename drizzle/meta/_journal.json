@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1793178496023,
+      "tag": "0000_cloudy_kingpin",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1793258250113,
+      "tag": "0001_thin_loners",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1793258604068,
+      "tag": "0002_gifted_piledriver",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1793268264151,
+      "tag": "0003_deep_shadowcat",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1793268972837,
+      "tag": "0004_magical_gamma_corps",
+      "breakpoints": true
+    }
+  ]
+}

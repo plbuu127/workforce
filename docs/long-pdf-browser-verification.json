@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-28T16:34:49.588Z",
+  "environment": "loopback browser; real inference",
+  "synthetic": true,
+  "operator": "AI browser agent, single-account self-test",
+  "case_id": "a58a2d96-8e92-4e04-b264-1673231aaead",
+  "browser_pdf_rendered": true,
+  "documents": [
+    {
+      "name": "stay-grid.jpg",
+      "pages": 1,
+      "category": "stay"
+    },
+    {
+      "name": "company-joining.pdf",
+      "pages": 1,
+      "category": "offer"
+    },
+    {
+      "name": "contract-eight-pages.pdf",
+      "pages": 8,
+      "category": "contract"
+    }
+  ],
+  "fields": {
+    "status": {
+      "value": "E-7-1",
+      "evidence": [
+        {
+          "page_id": "087dd93d-798f-4655-a1ed-d4634f10f40d:1",
+          "quote": "Reported status: E-7-1"
+        }
+      ]
+    },
+    "stay_expiry": {
+      "value": "2027-06-30",
+      "evidence": [
+        {
+          "page_id": "087dd93d-798f-4655-a1ed-d4634f10f40d:1",
+          "quote": "Valid until: 2027-06-30"
+        }
+      ]
+    },
+    "contract_start": {
+      "value": "2026-12-01",
+      "evidence": [
+        {
+          "page_id": "f2a1306f-5c81-4af7-bd28-38cf7df88c8e:8",
+          "quote": "Employment commencement: 1 December 2026"
+        }
+      ]
+    }
+  },
+  "issues": [],
+  "vision_proof": {
+    "mode": "live",
+    "provider": "Nebius Token Factory",
+    "model": "nvidia/Nemotron-3.5-Super-VL",
+    "http_status": 200,
+    "response_id": "chatcmpl-82e7366e7b55479f, chatcmpl-8df599fb2870cb5e, chatcmpl-98af28b258a2ab26",
+    "latency_ms": 22239,
+    "usage": {
+      "prompt_tokens": 23896,
+      "completion_tokens": 6077,
+      "total_tokens": 29973
+    },
+    "at": "2026-10-28T16:33:24.795Z",
+    "batch_count": 3,
+    "pages_processed": 10,
+    "batches": [
+      {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-82e7366e7b55479f",
+        "latency_ms": 8910,
+        "usage": {
+          "prompt_tokens": 8690,
+          "completion_tokens": 2173,
+          "total_tokens": 10863
+        },
+        "at": "2026-10-28T16:33:11.469Z"
+      },
+      {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8df599fb2870cb5e",
+        "latency_ms": 7360,
+        "usage": {
+          "prompt_tokens": 9941,
+          "completion_tokens": 2405,
+          "total_tokens": 12346
+        },
+        "at": "2026-10-28T16:33:18.834Z"
+      },
+      {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-98af28b258a2ab26",
+        "latency_ms": 5959,
+        "usage": {
+          "prompt_tokens": 5265,
+          "completion_tokens": 1499,
+          "total_tokens": 6764
+        },
+        "at": "2026-10-28T16:33:24.795Z"
+      }
+    ]
+  },
+  "last_page_preview_opened": true,
+  "notes": [
+    "Local preview storage initially retained a three-page key restriction. Fixed and retested.",
+    "All ten uploaded pages were analyzed in three actual requests.",
+    "No independent customer document or user study."
+  ]
+}

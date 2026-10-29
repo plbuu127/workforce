@@ -1,0 +1,520 @@
+{
+  "synthetic": true,
+  "reference_date": "2026-10-28",
+  "cases": [
+    {
+      "id": "01-clean",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-corrected-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "02-three-problems",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-unsigned-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-expiring.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-initial-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2026-11-05",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "contract-signature",
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ]
+      }
+    },
+    {
+      "id": "03-signature-only-fixed",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-expiring.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-initial-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2026-11-05",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ]
+      }
+    },
+    {
+      "id": "04-all-document-fixes",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-corrected-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "05-unreadable-stay",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-unreadable.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-corrected-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "",
+          "stay_expiry": "",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "quality",
+          "field-status",
+          "field-stay_expiry"
+        ]
+      }
+    },
+    {
+      "id": "06-missing-stay",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-corrected-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "",
+          "stay_expiry": "",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "document-stay",
+          "field-status",
+          "field-stay_expiry"
+        ]
+      }
+    },
+    {
+      "id": "07-missing-company",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "document-offer"
+        ]
+      }
+    },
+    {
+      "id": "08-korean-stay",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-korean.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-corrected-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "09-multiple-pages",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-two-pages-1.jpg",
+            "contract-two-pages-2.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-offer-corrected-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "10-employer-mismatch",
+      "split": "development",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-name-mismatch.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "documents-employer"
+        ]
+      }
+    },
+    {
+      "id": "11-role-mismatch",
+      "split": "holdout",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "contract-signed-realistic-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "company-role-mismatch.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-10"
+        },
+        "issues": [
+          "documents-job_title"
+        ]
+      }
+    },
+    {
+      "id": "12-alternate-layout",
+      "split": "holdout",
+      "profile": {
+        "location": "korea",
+        "goal": "change_employer",
+        "reported_status": "E-7-1",
+        "new_job_title": "Software engineer",
+        "job_changed": "no"
+      },
+      "documents": [
+        {
+          "id": "contract",
+          "category": "contract",
+          "files": [
+            "holdout-contract-1.jpg"
+          ]
+        },
+        {
+          "id": "stay",
+          "category": "stay",
+          "files": [
+            "stay-current.jpg"
+          ]
+        },
+        {
+          "id": "offer",
+          "category": "offer",
+          "files": [
+            "holdout-company-1.jpg"
+          ]
+        }
+      ],
+      "expected": {
+        "fields": {
+          "status": "E-7-1",
+          "stay_expiry": "2027-06-30",
+          "contract_start": "2026-11-18"
+        },
+        "issues": []
+      }
+    }
+  ]
+}

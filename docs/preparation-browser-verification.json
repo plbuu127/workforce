@@ -1,0 +1,138 @@
+{
+  "synthetic": true,
+  "environment": "loopback browser self-test; one test identity",
+  "version": 3,
+  "stage": "approved",
+  "profile": {
+    "location": "korea",
+    "goal": "change_employer",
+    "job_changed": "no",
+    "reported_status": "E-7-1",
+    "new_job_title": "Software engineer"
+  },
+  "audit_valid": true,
+  "audit_events": 17,
+  "versions": [
+    {
+      "version": 1,
+      "findings": [
+        "contract-signature",
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "comparison": {
+        "resolved": [],
+        "unconfirmed": [],
+        "remaining": [],
+        "new": [
+          "contract-signature",
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ]
+      },
+      "vision": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-9c84c61d62f08899",
+        "latency_ms": 10754,
+        "usage": {
+          "prompt_tokens": 6337,
+          "completion_tokens": 1631,
+          "total_tokens": 7968
+        },
+        "at": "2026-10-28T14:29:29.538Z"
+      },
+      "guidance": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "http_status": 200,
+        "response_id": "chatcmpl-bc7201644630de45",
+        "latency_ms": 1998,
+        "usage": {
+          "prompt_tokens": 352,
+          "completion_tokens": 75,
+          "total_tokens": 427
+        },
+        "at": "2026-10-28T14:29:31.548Z"
+      },
+      "guidance_error": null
+    },
+    {
+      "version": 2,
+      "findings": [
+        "date-conflict",
+        "expiry-reminder",
+        "documents-start"
+      ],
+      "comparison": {
+        "resolved": [
+          "contract-signature"
+        ],
+        "unconfirmed": [],
+        "remaining": [
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ],
+        "new": []
+      },
+      "vision": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-aaae3ab249ffab91",
+        "latency_ms": 6674,
+        "usage": {
+          "prompt_tokens": 6336,
+          "completion_tokens": 1839,
+          "total_tokens": 8175
+        },
+        "at": "2026-10-28T14:33:52.730Z"
+      },
+      "guidance": null,
+      "guidance_error": "provider_invalid_guidance"
+    },
+    {
+      "version": 3,
+      "findings": [],
+      "comparison": {
+        "resolved": [
+          "date-conflict",
+          "expiry-reminder",
+          "documents-start"
+        ],
+        "unconfirmed": [],
+        "remaining": [],
+        "new": []
+      },
+      "vision": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-85763f591c087cd0",
+        "latency_ms": 6670,
+        "usage": {
+          "prompt_tokens": 6341,
+          "completion_tokens": 1784,
+          "total_tokens": 8125
+        },
+        "at": "2026-10-28T14:39:49.512Z"
+      },
+      "guidance": null,
+      "guidance_error": null
+    }
+  ],
+  "company_checks_recorded": [
+    "transition",
+    "company",
+    "procedure"
+  ],
+  "readable_summary_downloaded": true
+}

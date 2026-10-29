@@ -1,0 +1,167 @@
+{
+  "id": "04-all-document-fixes",
+  "reading": {
+    "pages": [
+      {
+        "page_id": "contract:1",
+        "text": "EMPLOYMENT AGREEMENT SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Employee signature QA Test Signer Fictional evaluation material - no personal identifiers",
+        "quality": "readable",
+        "signature": "visible",
+        "quality_reason": "Printed dates and letters are legible; a typed name appears in the designated signature area with an underline beneath it, so the signature field is not blank. No blur, crop, or glare affects readability of relevant text or the signature/ID"
+      },
+      {
+        "page_id": "stay:1",
+        "text": "STAY INFORMATION SYNTHETIC QA - NOT A GOVERNMENT ID Reported stay status: E-7-1 Reported stay expiry: 2027-06-30 Record issued: 2026-10-20 No personal identifiers included.",
+        "quality": "readable",
+        "signature": "not_applicable",
+        "quality_reason": "Printed dates and letters are legible; the page contains a stay information block with status and expiry, and there is no signature area on the page. No blur, crop, or glare affects readability of relevant text"
+      },
+      {
+        "page_id": "offer:1",
+        "text": "COMPANY JOINING DETAILS SYNTHETIC QA DOCUMENT - NO LEGAL EFFECT Employer: Harbor Labs Job title: Software engineer Work location: Seoul, Korea Document issue date: 2026-10-28 Proposed employment start: 2026-11-10 Contract end: 2027-12-31 This page is a test artifact; it creates no employment agreement. Prepared by the company for document comparison. This is not a government form or evidence of work permission. Fictional evaluation material - no personal identifiers",
+        "quality": "readable",
+        "signature": "not_applicable",
+        "quality_reason": "Printed dates and letters are legible; the page contains employer, job title, and proposed start information, and there is no signature area on the page. No blur, crop, or glare affects readability of relevant text"
+      }
+    ],
+    "fields": {
+      "status": {
+        "value": "E-7-1",
+        "evidence": [
+          {
+            "page_id": "stay:1",
+            "quote": "Reported stay status: E-7-1"
+          }
+        ]
+      },
+      "stay_expiry": {
+        "value": "2027-06-30",
+        "evidence": [
+          {
+            "page_id": "stay:1",
+            "quote": "Reported stay expiry: 2027-06-30"
+          }
+        ]
+      },
+      "contract_start": {
+        "value": "2026-11-10",
+        "evidence": [
+          {
+            "page_id": "contract:1",
+            "quote": "Proposed employment start: 2026-11-10"
+          }
+        ]
+      }
+    },
+    "document_fields": [
+      {
+        "page_id": "contract:1",
+        "start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        },
+        "employer": {
+          "value": "Harbor Labs",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Employer: Harbor Labs"
+            }
+          ]
+        },
+        "job_title": {
+          "value": "Software engineer",
+          "evidence": [
+            {
+              "page_id": "contract:1",
+              "quote": "Job title: Software engineer"
+            }
+          ]
+        }
+      },
+      {
+        "page_id": "stay:1",
+        "start": {
+          "value": "",
+          "evidence": []
+        },
+        "employer": {
+          "value": "",
+          "evidence": []
+        },
+        "job_title": {
+          "value": "",
+          "evidence": []
+        }
+      },
+      {
+        "page_id": "offer:1",
+        "start": {
+          "value": "2026-11-10",
+          "evidence": [
+            {
+              "page_id": "offer:1",
+              "quote": "Proposed employment start: 2026-11-10"
+            }
+          ]
+        },
+        "employer": {
+          "value": "Harbor Labs",
+          "evidence": [
+            {
+              "page_id": "offer:1",
+              "quote": "Employer: Harbor Labs"
+            }
+          ]
+        },
+        "job_title": {
+          "value": "Software engineer",
+          "evidence": [
+            {
+              "page_id": "offer:1",
+              "quote": "Job title: Software engineer"
+            }
+          ]
+        }
+      }
+    ],
+    "proof": {
+      "mode": "live",
+      "provider": "Nebius Token Factory",
+      "model": "nvidia/Nemotron-3.5-Super-VL",
+      "http_status": 200,
+      "response_id": "chatcmpl-bd33f41d4a2505f5",
+      "latency_ms": 4561,
+      "usage": {
+        "prompt_tokens": 4063,
+        "completion_tokens": 1232,
+        "total_tokens": 5295
+      },
+      "at": "2026-10-28T15:21:01.147Z"
+    }
+  },
+  "issues": [],
+  "guidance": {
+    "message": "No internal preparation issue was detected. Your packet is ready for a reviewer to compare the original documents and applicable procedure.",
+    "sources": [
+      {
+        "id": "immigration-1345",
+        "title": "Immigration Contact Center · 1345",
+        "publisher": "Ministry of Justice · Korea Immigration Service",
+        "url": "https://www.immigration.go.kr/immigration_eng/1862/subview.do",
+        "reviewed_at": "2026-10-28",
+        "kind": "reviewed_summary",
+        "summary": "Official multilingual counseling route for immigration and living-in-Korea questions. Ask about the exact status, procedure and personal circumstances."
+      }
+    ],
+    "mode": "workflow_status",
+    "proof": null
+  },
+  "guidance_error": null,
+  "pipeline_ms": 4563
+}
