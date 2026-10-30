@@ -1,3 +1,5 @@
+> Historical Sites verification, October 28. The current operating site is https://workforce-pied-iota.vercel.app; see [Vercel production evidence](vercel-production-verification.json). The original test address below is retained for provenance.
+
 # Standalone Workforce verification
 
 Verified on 2026-10-28 at https://workforce.sally127506.chatgpt.site. All uploaded files were fictional test documents. This is technical acceptance testing, not foreign-employee feedback or an immigration-accuracy study.

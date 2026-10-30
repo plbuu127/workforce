@@ -48,19 +48,20 @@ The browser prepares the PDF/images normally, then transmits the multipart body 
 
 The existing 10 MiB original-file, 12-page/file, 16-page/case, and 17 MiB multipart limits remain. Live deployment must verify original-file streaming and persistence, not only local transport.
 
-## Validation status
+## Validation status — completed October 30, 2026
 
-Before deployment, the 362 existing workflow assertions plus isolation suite passed against the libSQL adapter. The new runtime suite covers guest isolation, forged gateway headers, durable account login/logout, cross-origin rejection, a file larger than 4.5 MiB, chunk ownership, private download access, and audit continuity. These tests use synthetic data and mock AI transport; they do not establish live model accuracy.
+Production: https://workforce-pied-iota.vercel.app — judge entry: `/login` or `/demo`.
 
-Deployment completion requires all of the following:
+The production deployment uses the owner's selected Vercel account/team. Turso, private Blob and dedicated server-only Nebius credentials are connected. Anonymous requests to the stable production homepage/login return 200 without a Vercel login; private APIs require an application session. Preview deployment protection may differ from this public production alias.
 
-- Confirm the final owner's Vercel account and team.
-- Connect production database, private Blob, and Nebius secrets.
-- Verify public production access without Vercel deployment protection.
-- Run a fresh judge session through company creation, employee submission, live AI, reviewer changes, resubmission, and completed review.
-- Verify files and records after reloading, and deny a second visitor access.
-- Record the final Vercel URL and live test evidence in the submission documentation.
+The 362 workflow assertions plus isolation suite passed against the libSQL adapter; 36 Vercel runtime assertions also passed. Those suites use synthetic data and mock AI transport.
 
-Production entry: https://workforce-pied-iota.vercel.app/login
+A separate production run passed 28 checks with actual NVIDIA/Nebius inference: a fresh guest created a company and case, submitted a PDF larger than 5 MiB and photo/company files, requested changes, replaced and resubmitted documents, completed review with explicit follow-ups, and verified the audit. Findings changed 4 → 3 → 0 across three live vision calls; the first two also have live guidance receipts. Zero-finding guidance is labelled workflow status. All 19 audit events verified, file hashes matched after private downloads, prior versions and approval persisted after fresh fetch, and another visitor could not read the case.
 
-Anonymous checks confirmed HTTP 200 for the homepage and login page, durable database/file configuration present, and HTTP 401 for private case APIs without a session. Live AI is not connected yet; completing the remaining checklist is still required.
+See [the sanitized production evidence](vercel-production-verification.json). The test is synthetic engineering evidence, not a real employee study. `node scripts/verify-vercel-live.mjs` reproduces the sequence and consumes real model quota; it is not part of automated CI.
+
+## Remaining operational limitations
+
+Email ownership/company identity verification, password reset and email sending are not implemented. Guest access is isolated but depends on its browser cookie. Existing Sites data is not migrated. The optional operator account uses `WORKFORCE_OPERATOR_USER_ID`; it is not required for ordinary workspace creation.
+
+Keep inference credits and expiry valid throughout judging. The observed trial balance/expiry does not yet establish coverage through December judging. No paid top-up or plan upgrade was made. The final video and competition submission are separate remaining tasks.

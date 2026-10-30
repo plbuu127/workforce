@@ -1,0 +1,165 @@
+{
+  "at": "2026-10-30T09:51:46.633Z",
+  "url": "https://workforce-pied-iota.vercel.app",
+  "scope": "Synthetic engineering verification; not a real employee study.",
+  "checks": [
+    "Production dependencies configured",
+    "Guest session without Vercel or ChatGPT login",
+    "Fresh empty workspace",
+    "Employee accepts new case",
+    "Another judge cannot read the case",
+    "Saved contract over 5 MiB on Vercel",
+    "Private contract original downloaded intact",
+    "Saved stay file on Vercel",
+    "Private stay original downloaded intact",
+    "Saved offer file on Vercel",
+    "Private offer original downloaded intact",
+    "Initial packet uses live vision",
+    "Live AI identifies unsigned contract",
+    "Reviewer requests changes",
+    "Saved contract file on Vercel",
+    "Private contract original downloaded intact",
+    "Signature updated uses live vision",
+    "Signature issue removed after actual replacement",
+    "Saved stay file on Vercel",
+    "Private stay original downloaded intact",
+    "Saved offer file on Vercel",
+    "Private offer original downloaded intact",
+    "Corrected packet uses live vision",
+    "Corrected fictional packet has no detected issues",
+    "Approval requires an explicit follow-up resolution",
+    "Reviewer completes preparation review with explicit follow-ups",
+    "Production audit hash chain valid",
+    "Review and prior versions persist after fresh fetch"
+  ],
+  "analyses": [
+    {
+      "label": "Initial packet",
+      "version": 1,
+      "stage": "needs_changes",
+      "issues": [
+        {
+          "id": "contract-signature",
+          "owner": "employee"
+        },
+        {
+          "id": "date-conflict",
+          "owner": "reviewer"
+        },
+        {
+          "id": "expiry-reminder",
+          "owner": "reviewer"
+        },
+        {
+          "id": "documents-start",
+          "owner": "reviewer"
+        }
+      ],
+      "vision": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-be1d8f8cd7f74e3a",
+        "latency_ms": 5837,
+        "usage": {
+          "prompt_tokens": 4155,
+          "completion_tokens": 1623,
+          "total_tokens": 5778
+        },
+        "at": "2026-10-30T09:52:16.227Z"
+      },
+      "guidance": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "http_status": 200,
+        "response_id": "chatcmpl-bfa07968cf0fd63a",
+        "latency_ms": 1138,
+        "usage": {
+          "prompt_tokens": 587,
+          "completion_tokens": 47,
+          "total_tokens": 634
+        },
+        "at": "2026-10-30T09:52:17.483Z"
+      },
+      "guidance_mode": "live",
+      "guidance_error": null
+    },
+    {
+      "label": "Signature updated",
+      "version": 2,
+      "stage": "ready_for_review",
+      "issues": [
+        {
+          "id": "date-conflict",
+          "owner": "reviewer"
+        },
+        {
+          "id": "expiry-reminder",
+          "owner": "reviewer"
+        },
+        {
+          "id": "documents-start",
+          "owner": "reviewer"
+        }
+      ],
+      "vision": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-ae5d44f7f558b2b5",
+        "latency_ms": 5937,
+        "usage": {
+          "prompt_tokens": 4159,
+          "completion_tokens": 1703,
+          "total_tokens": 5862
+        },
+        "at": "2026-10-30T09:52:26.881Z"
+      },
+      "guidance": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "http_status": 200,
+        "response_id": "chatcmpl-9a259ff78582b40e",
+        "latency_ms": 785,
+        "usage": {
+          "prompt_tokens": 593,
+          "completion_tokens": 58,
+          "total_tokens": 651
+        },
+        "at": "2026-10-30T09:52:27.867Z"
+      },
+      "guidance_mode": "live",
+      "guidance_error": null
+    },
+    {
+      "label": "Corrected packet",
+      "version": 3,
+      "stage": "ready_for_review",
+      "issues": [],
+      "vision": {
+        "mode": "live",
+        "provider": "Nebius Token Factory",
+        "model": "nvidia/Nemotron-3.5-Super-VL",
+        "http_status": 200,
+        "response_id": "chatcmpl-8a5b27b5b880f95c",
+        "latency_ms": 6302,
+        "usage": {
+          "prompt_tokens": 4158,
+          "completion_tokens": 1720,
+          "total_tokens": 5878
+        },
+        "at": "2026-10-30T09:52:41.341Z"
+      },
+      "guidance": null,
+      "guidance_mode": "workflow_status",
+      "guidance_error": null
+    }
+  ],
+  "final_stage": "approved",
+  "audit_events": 19,
+  "success": true
+}

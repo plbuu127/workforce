@@ -32,4 +32,4 @@ export function makeHandler(getEnv){return async function handle(req){
   return response;
  }catch(e){console.error('Workforce request failed:',e.code||'runtime');return json({code:e.code||'runtime_unavailable'},e.status||503);}
 };}
-export default makeHandler(async()=>({DB:await environment(),BUCKET:blobBucket(),NEBIUS_API_KEY:process.env.NEBIUS_API_KEY,NEBIUS_AI_ENABLED:process.env.NEBIUS_AI_ENABLED,WORKFORCE_OPERATOR_IDS:process.env.WORKFORCE_OPERATOR_IDS||''}));
+export default makeHandler(async()=>({DB:await environment(),BUCKET:blobBucket(),NEBIUS_API_KEY:process.env.NEBIUS_API_KEY,NEBIUS_AI_ENABLED:process.env.NEBIUS_AI_ENABLED,WORKFORCE_OPERATOR_USER_ID:process.env.WORKFORCE_OPERATOR_USER_ID||''}));

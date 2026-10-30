@@ -19,6 +19,9 @@ Official rules govern if requirements change. This checklist is preparation, not
 
 ## Product evidence ready
 
+- [x] Full Vercel migration: accounts, companies, Turso records, private Blob files and dedicated Nebius server credential.
+- [x] Production acceptance: 28 checks, >5 MiB PDF integrity, real 4 → 3 → 0 analysis, reviewer approval, 19 valid audit events and cross-visitor denial.
+
 - [x] Independent source, database, storage and deployment; BuildAI entry preserved.
 - [x] Historical technical test before company-verification gating: two distinct signed-in accounts completed upload, analysis, correction request, replacement, reanalysis, approval and employee export.
 - [x] Three live NVIDIA responses for that case, redacted execution evidence and 11 verified audit events.
@@ -38,8 +41,8 @@ Official rules govern if requirements change. This checklist is preparation, not
 
 - [ ] Choose the final name if changing Workforce.
 - [x] Published an independent GitHub repository; credentials, account data and local exports are excluded. Keep its code synchronized with the deployed version.
-- [x] Provide a no-sign-in judge entry at https://workforce.sally127506.chatgpt.site/demo. It uses isolated fictional documents with real inference; real company work requires operator approval.
-- [ ] Confirm credits and access throughout the judging period; current AI request caps can block new analysis.
+- [x] Provide a no-sign-in judge entry at https://workforce-pied-iota.vercel.app/login. Each guest can create a company/case and use the complete real upload/AI/review workflow with its own isolated test identities. No Vercel/ChatGPT account or operator approval is needed.
+- [ ] Confirm credits and expiry throughout the judging period. The provider trial observed on October 30 does not yet cover December judging; no paid top-up has been made. Request caps can also block new analysis.
 - [ ] Record the current no-sign-in demo with fictional files and the visible role switch. It is one person trying both roles, distinct from the earlier two-account technical test. Hide any account emails and invitation links.
 - [ ] Upload the final video and check public visibility.
 - [ ] Fill the English project description and technology feedback using verified results; do not claim a real-user study.
