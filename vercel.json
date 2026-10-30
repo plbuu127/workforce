@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "vercel-static",
+  "regions": ["hnd1"],
+  "functions": {"api/index.js": {"maxDuration": 300, "includeFiles": "{dist/server/**,drizzle/**,vercel-runtime/**}"}},
+  "rewrites": [{"source":"/((?!samples/|vendor/).*)", "destination":"/api/index"}]
+}

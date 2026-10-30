@@ -41,3 +41,7 @@ The sidebar now has a dedicated **Company workspaces** route at `/companies`. It
 ## Public entry verification
 
 The owner explicitly approved public visitor access on 2026-10-29. Sites returned `access_mode: public`, access revision 2. Anonymous production requests to the app list, company details, an existing case, its audit/export/file routes and company creation are rejected with 401. Supplying invented identity headers also returns 401. The public HTML contains onboarding code and no private demo company names. The existing signed-in owner can still open their company workspace. These checks are targeted access-boundary evidence, not a complete penetration test or security certification.
+
+## Self-service entry — October 30
+
+At the owner's request, no prior company approval is required. A signed-in user enters a company name and team display name, then immediately creates cases and invitations. Previously pending workspaces are usable without any manual status mutation. Company identity is still unverified unless an operator separately verifies it. Creating a same-named company never grants membership in an existing company. Real case files remain limited to the case employee and assigned active reviewer; suspension, rejected-workspace restrictions, recipient-bound invitations, audit records and usage limits remain. The company integration suite now runs its entire two-company submission/review/resubmission flow without operator approval. Its AI responses are explicit mocks, not live-model evidence.

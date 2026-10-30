@@ -1,4 +1,3 @@
-import {application,approveFixture} from './approved-fixture.mjs';
 import assert from 'node:assert/strict';
 import worker from '../dist/server/index.js';
 import {localDatabase} from './sqlite-adapter.mjs';
@@ -8,7 +7,7 @@ let n=0;const check=(v,m)=>{assert.ok(v,m);n++;};
 const DB=await localDatabase(),env={DB,BUCKET:memoryBucket(),NEBIUS_API_KEY:'offline-test-only',NEBIUS_AI_ENABLED:'true'};
 const origin='https://company.test';
 async function call(path,user='owner-a',b){const r=await worker.fetch(new Request(origin+'/api/intake'+path,{method:b===undefined?'GET':'POST',headers:{'oai-authenticated-user-id':user,'oai-authenticated-user-email':user+'@example.test',origin,...(b instanceof FormData?{}:{'content-type':'application/json'})},body:b===undefined?undefined:b instanceof FormData?b:JSON.stringify(b)}),env);return {status:r.status,body:r.headers.get('content-type')?.includes('json')?await r.json():await r.arrayBuffer()};}
-const company=async(name,user)=>{const c=(await call('/companies',user,{id:crypto.randomUUID(),name,member_name:user,...application})).body.company;await approveFixture(env,c.id,c.revision);return c;};
+const company=async(name,user)=>{const r=await call('/companies',user,{id:crypto.randomUUID(),name,member_name:user});check(r.status===200,'company opens with name and display name only');check(r.body.company.verification_status==='pending'&&r.body.company.access_mode==='self_service','immediate access does not claim verified company identity');return r.body.company;};
 const overview=async(c,user)=>(await call('/companies/'+c.id,user)).body;
 async function invite(c,owner,who,role='reviewer'){const d=await overview(c,owner);return call('/companies/'+c.id+'/invites',owner,{revision:d.company.revision,email:who+'@example.test',role});}
 async function add(c,owner,who,role='reviewer'){const i=await invite(c,owner,who,role);const r=await call('/companies/join',who,{token:i.body.team_invite,member_name:who});check(r.status===200,'team member joins '+who);return r.body.company;}
@@ -84,5 +83,5 @@ try{
  await assert.rejects(DB.prepare("UPDATE workforce_company_events SET actor='forged' WHERE company_id=?").bind(a.id).run(),/company_audit_append_only/);n++;
  const cross=await worker.fetch(new Request(origin+'/api/intake/companies',{method:'POST',headers:{'oai-authenticated-user-id':'attacker',origin:'https://attacker.test','content-type':'application/json'},body:'{}'}),env);check(cross.status===403,'company mutations retain same-origin protection');
  check((await overview(a,'owner-a')).events.some(x=>x.action==='reviewer_reassigned'),'company handoff event recorded');
- console.log(`Companies: ${n} assertions passed. Two companies; separate synthetic identities; uploads, mocked AI, handoff, re-submission, approval and tenant isolation. No real user study.`);
+ console.log(`Companies: ${n} assertions passed. Two companies without operator approval; separate synthetic identities; uploads, mocked AI, handoff, re-submission, approval and tenant isolation. No real user study.`);
 }finally{globalThis.fetch=originalFetch;DB.close();}

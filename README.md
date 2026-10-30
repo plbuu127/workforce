@@ -1,5 +1,9 @@
 # Workforce
 
+## Vercel deployment target
+
+The independent Vercel runtime includes accounts, isolated judging workspaces, the full company/employee workflow, Turso persistence, private Blob uploads, and Nebius AI calls. See [Vercel deployment and validation](docs/VERCEL-DEPLOYMENT.md). The [Vercel production entry](https://workforce-pied-iota.vercel.app/login) is publicly reachable. Full production workflow and live AI verification are in progress; the existing Sites service remains available.
+
 Workforce is an independent preparation workspace for foreign employees already in Korea who are changing employers, and their assigned HR reviewers. Its first focused journey is an E-7-1 employee changing jobs. Employees upload actual PDF, JPEG or PNG documents, receive specific preparation findings, replace documents and resubmit. Reviewers compare the cited source pages, request changes or approve a preparation message. Both participants see the same version and audit history.
 
 ## Independent service
@@ -85,7 +89,7 @@ The 2026-10-29 improvement adds an action-first employee screen, a condition-dep
 
 A paired agent-operated measurement used the same initial/corrected synthetic packet. Both arms recorded 18/18 facts with no missed expected findings. Manual transcription required 18 field entries; AI-assisted verification required no field edits. Combined time was 55.6 vs 52.4 seconds including AI processing; this small, tool-dependent difference is **not** human productivity evidence. No reduction in follow-up rounds was demonstrated. [Raw measurement and limitations](docs/workflow-measurement.md).
 
-See the [2:55 English demo plan](docs/hackathon/DEMO-PLAN.md) and [submission checklist](docs/hackathon/SUBMISSION-CHECKLIST.md). The name remains provisional. Public repository publication, video and final submission remain pending. Judges can open `/demo` without an account. Company applications and real cases follow the approval workflow.
+See the [2:55 English demo plan](docs/hackathon/DEMO-PLAN.md) and [submission checklist](docs/hackathon/SUBMISSION-CHECKLIST.md). The name remains provisional. Public repository publication, video and final submission remain pending. Judges can open `/demo` without an account. Company workspaces open immediately after sign-in; no operator approval is required. Employee invitations still use a separate named account.
 
 - PDF/JPEG/PNG only; 10 MB per original, 12 pages per file, 16 pages per case, 4 document categories, 10 versions. Original files and rendered page images are stored privately.
 - 20 model calls per user per Korea calendar day and 100 for the Site; provider quotas can be lower.
@@ -108,7 +112,7 @@ Employees can save a bounded situation note and indicate whether the agreed star
 
 ## Company workspaces
 
-Open **Company** (or `/companies`), enter your display name and submit the company application. Existing unverified companies also require review; none are automatically marked verified. Use **Workspace** to switch between companies and all your cases. Company owners can invite administrators or reviewers; other administrators can invite reviewers. A team invitation can only be accepted by its named sign-in email and expires after 48 hours. No email is sent automatically.
+Open **Company** (or `/companies`), enter a company name and your display name, and select **Create company workspace**. The workspace is immediately usable. Existing pending workspaces are also usable. This self-service entry does not verify company identity or grant access to any other company. Use **Workspace** to switch between companies and all your cases. Company owners can invite administrators or reviewers; other administrators can invite reviewers. A team invitation can only be accepted by its named sign-in email and expires after 48 hours. No email is sent automatically.
 
 Administrators see company case labels, stages and assignments. They do not automatically receive originals, AI readings or review notes from unassigned cases. An administrator may explicitly assign a case to themselves or another active colleague; this is recorded in both the case hash chain and append-only company activity log. The previous reviewer immediately loses case, file and export access. A colleague must hand over all retained cases before their membership is removed. The company owner cannot be removed. Legacy self-test cases are quarantined; use `/demo` for a sample walkthrough.
 
@@ -128,9 +132,9 @@ Each case has four sections: **Next steps**, **Documents**, **Findings** (employ
 
 ## Company access operations
 
-At `/operator`, the designated account sees the authenticated applicant email and stable account reference separately from the applicant-provided company contact. Independently locate the company’s official contact and confirm that exact applicant’s authority; do not treat an applicant-provided website or a matching domain alone as proof. Record the sources, method, date and confirmation in the decision note. Do not paste identity documents or secrets. No verification email is sent by this MVP. Approval, rejection and suspension are recorded in company activity history.
+Company identity verification is optional and does not block normal use. At `/operator`, the designated account sees the authenticated applicant email and stable account reference separately from the applicant-provided company contact. Independently locate the company’s official contact and confirm that exact applicant’s authority; do not treat an applicant-provided website or a matching domain alone as proof. Record the sources, method, date and confirmation in the decision note. Do not paste identity documents or secrets. No verification email is sent by this MVP. Approval, rejection and suspension are recorded in company activity history.
 
-Unverified or suspended companies cannot create real cases, issue or accept staff/employee invitations, access case files/history/exports or process changes. Approval is checked at both access and write boundaries. Existing records are retained while locked. Applications missing authenticated applicant email must be resubmitted by their signed-in owner before approval. Existing unbound employee links must be renewed with the recipient email after company approval.
+As requested on October 30, the prior company-approval gate is removed. Pending and approved workspaces can create cases, invite named employees and colleagues, upload files and review submissions. Rejected or suspended workspaces remain restricted; submitting an updated application cannot reactivate them. Server checks still require the case employee or assigned active reviewer, enforce company membership and bind invitations to their recipient email. Registering the same company name never joins another workspace. Legacy unbound invitations must be renewed with a recipient email. No verification decision is fabricated and no existing company is relabeled verified.
 
 ## October 30 workflow fixes
 
@@ -138,4 +142,4 @@ Employees can return checklist-only updates after a change request with **Send u
 
 ## Source provenance
 
-This public release is a source snapshot of the independent hosted Workforce project at commit `0c0981d266c20e5267a2fe37d39cf02d57e058dc` (deployed version 24), with public-release provenance. Runtime source and synthetic test assets are included; server secrets, local databases, private account records and internal Git history are excluded. This publication date is not the start date of development. The workflow was developed earlier in SettleK Navigator and substantially extended as described above.
+This public release is a source snapshot of the independent hosted Workforce project at commit `48247a3e7a026f7950dabec54e9c583351807305` (deployed version 25), with public-release provenance. Runtime source and synthetic test assets are included; server secrets, local databases, private account records and internal Git history are excluded. This publication date is not the start date of development. The workflow was developed earlier in SettleK Navigator and substantially extended as described above. The self-service entry release passes 362 assertions plus service-isolation checks; automated model transport is mocked. It removes the prior company approval wait without marking any company identity verified.

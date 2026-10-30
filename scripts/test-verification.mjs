@@ -16,11 +16,11 @@ let cookie='';async function demo(b,cookieValue=cookie,extra={}){const r=await w
 const originalFetch=globalThis.fetch;
 try{
  const c=await company();check((await call('/operator/companies','operator')).body.applications[0].applicant_email==='owner@example.test','operator sees authenticated applicant, not just claimed company contact');
- check(c.verification_status==='pending','forged approved flag cannot activate company');
+ check(c.verification_status==='pending','self-service company does not claim an independently verified identity');
  check((await call('/operator/companies','owner')).status===403,'company owner is not platform operator');
  check((await call('/operator/companies',null)).status===401,'operator requires sign in');
- for(const b of [create(c.id),create(c.id,{self_test:true}),create(c.id,{demo:true}),create(undefined,{self_test:true}),create(null)])check((await call('/cases','owner',b)).status===403,'pending or companyless bypass blocked');
- check((await call('/companies/'+c.id+'/invites','owner',{revision:c.revision,email:'colleague@example.test',role:'admin'})).status===403,'pending company cannot grant team rights');
+ for(const b of [create(c.id,{self_test:true}),create(c.id,{demo:true}),create(undefined,{self_test:true}),create(null)])check((await call('/cases','owner',b)).status===403,'unscoped or legacy self-test bypass blocked');
+ check((await call('/cases','owner',create(c.id))).status===201,'company creates a case immediately without operator approval');
  check((await call('/operator/companies/'+c.id,'owner',decision(c.revision))).status===403,'self-approval denied');
  check((await call('/operator/companies/'+c.id,'operator',{...decision(c.revision),authority_confirmed:false})).status===400,'independent authority confirmation required');
  check((await call('/operator/companies/'+c.id,'operator',decision(c.revision))).status===200,'designated operator approves fixture');
@@ -47,7 +47,7 @@ try{
  check((await call('/join','employee',{token:unclaimed.body.invite})).status===403,'preexisting employee invitation does not bypass suspension');
  check((await call('/companies/join','staff',{token:team.body.team_invite,member_name:'Staff Person'})).status===403,'preexisting staff invitation does not bypass suspension');
  check((await call('/companies/invitation','staff',{token:team.body.team_invite})).status===403,'suspended team preview blocked');
- check((await call('/companies/'+c.id,'owner')).body.cases===undefined,'pending/suspended admin sees no case metadata');
+ check((await call('/companies/'+c.id,'owner')).body.cases===undefined,'suspended admin sees no case metadata');
  // Legacy nullable company rows and self-test cases stay stored, but inaccessible.
  for(const [legacyCompany,state] of [[null,{self_test:false}], [c.id,{self_test:true}]]){
   const id=crypto.randomUUID();await DB.prepare('INSERT INTO workforce_intake_cases(id,reviewer_id,employee_id,company_id,revision,state_json,event_json,previous_hash,event_hash,created_at,updated_at) VALUES(?,?,?, ?,1,?, ?,?,?,?,?)').bind(id,'owner','employee',legacyCompany,JSON.stringify({name:'Legacy fixture',stage:'collecting',...state}),'{}','','fixture','2026-01-01','2026-01-01').run();check((await call('/cases/'+id,'employee')).status===404,'legacy unsafe workflow inaccessible');
@@ -117,6 +117,13 @@ try{
  await DB.prepare("UPDATE workforce_demo_sessions SET expires_at='2000-01-01T00:00:00.000Z' WHERE token_hash=?").bind(savedRow.token_hash).run();
  const expired=await demo();check(expired.body.session===null&&expired.body.expired===true,'expired cookie returns an explicit recovery signal');
  check((await demo({action:'restart',revision:s.revision})).body.code==='demo_session_required','expired mutation gives recoverable session error');
+
+ const blockedOverview=(await call('/companies/'+c.id,'owner')).body;
+ await call('/operator/companies/'+c.id,'operator',decision(blockedOverview.company.revision,'rejected'));
+ const rejected=(await call('/companies/'+c.id,'owner')).body.company;
+ const resubmitted=await call('/companies/'+c.id+'/application','owner',{revision:rejected.revision,...application});
+ check(resubmitted.body.company.verification_status==='rejected','editing company details cannot remove an explicit restriction');
+ check((await call('/cases','owner',create(c.id))).status===403,'restricted company remains blocked after editing details');
  check((await DB.prepare('SELECT count(*) AS n FROM workforce_companies').first()).n===1,'demo writes no real companies');
  check((await DB.prepare("SELECT count(*) AS n FROM workforce_company_members WHERE user_id NOT IN ('owner')").first()).n===0,'demo creates no staff memberships');
  const seeded=Array.from({length:200},(_,i)=>({id:crypto.randomUUID(),at:new Date(Date.UTC(2020,0,1,0,0,i)).toISOString()}));await DB.batch(seeded.map(x=>DB.prepare('INSERT INTO workforce_companies(id,name,owner_id,revision,operation_id,created_at) VALUES(?,?,?,1,?,?)').bind(x.id,'Pagination fixture','owner-'+x.id,crypto.randomUUID(),x.at)));
@@ -124,5 +131,5 @@ try{
  const page2=(await call('/operator/companies?before='+page1.next_cursor,'operator')).body,page3=(await call('/operator/companies?before='+page2.next_cursor,'operator')).body;
  check(new Set([...page1.applications,...page2.applications,...page3.applications].map(x=>x.id)).size===201,'all applications remain reachable without gaps or duplicates');
  check(page3.applications.some(x=>x.id===seeded[0].id)&&page3.next_cursor===null,'oldest application remains available for review or suspension');
- console.log(`Verification & demo: ${n} assertions passed. Approved-company gates, operator authority, recipient binding, legacy quarantine, CAS race, isolated sample workflow. AI mocked; not live evidence.`);
+ console.log(`Verification & demo: ${n} assertions passed. Self-service access, optional operator authority, recipient binding, legacy quarantine, CAS race, isolated sample workflow. AI mocked; not live evidence.`);
 }finally{globalThis.fetch=originalFetch;DB.close();}

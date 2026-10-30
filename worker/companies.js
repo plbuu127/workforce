@@ -4,12 +4,12 @@ export const fail=(code,status=400)=>Object.assign(new Error(code),{code,status}
 const validId=x=>typeof x==='string'&&/^[0-9a-f-]{36}$/.test(x);
 const validName=x=>typeof x==='string'&&x.trim().length>=2&&x.length<=80&&!/[<>\u0000-\u001f]/.test(x);
 const now=()=>new Date().toISOString();
-export const CASE_ACCESS=`(COALESCE(json_extract(c.state_json,'$.self_test'),0)=0 AND COALESCE(json_extract(c.state_json,'$.synthetic_demo'),0)=0 AND EXISTS(SELECT 1 FROM workforce_companies co WHERE co.id=c.company_id AND co.verification_status='approved') AND (c.employee_id=? OR (c.reviewer_id=? AND EXISTS (SELECT 1 FROM workforce_company_members m WHERE m.company_id=c.company_id AND m.user_id=c.reviewer_id AND m.active=1))))`;
+export const CASE_ACCESS=`(COALESCE(json_extract(c.state_json,'$.self_test'),0)=0 AND COALESCE(json_extract(c.state_json,'$.synthetic_demo'),0)=0 AND EXISTS(SELECT 1 FROM workforce_companies co WHERE co.id=c.company_id AND co.verification_status IN ('pending','approved')) AND (c.employee_id=? OR (c.reviewer_id=? AND EXISTS (SELECT 1 FROM workforce_company_members m WHERE m.company_id=c.company_id AND m.user_id=c.reviewer_id AND m.active=1))))`;
 export const CASE_SELECT=`SELECT c.*, (SELECT name FROM workforce_companies WHERE id=c.company_id) AS company_name, (SELECT name FROM workforce_company_members WHERE company_id=c.company_id AND user_id=c.reviewer_id AND active=1 LIMIT 1) AS reviewer_name FROM workforce_intake_cases c`;
 export async function member(db,company,user){return db.prepare('SELECT * FROM workforce_company_members WHERE company_id=? AND user_id=? AND active=1').bind(company,user).first();}
 export async function companyFor(db,id,user){const c=await db.prepare('SELECT * FROM workforce_companies WHERE id=?').bind(id).first();const m=c&&await member(db,id,user);if(!c||!m)throw fail('company_not_found',404);return {c,m};}
-export async function requireCompanyReviewer(db,id,user){if(!validId(id))throw fail('company_not_found',404);const found=await companyFor(db,id,user);if(found.c.verification_status!=='approved')throw fail('company_verification_required',403);return found;}
-const publicCompany=(c,m,user)=>({id:c.id,name:c.name,revision:c.revision,verification_status:c.verification_status,application:JSON.parse(c.application_json),verification:JSON.parse(c.verification_json),role:m.role,is_owner:c.owner_id===user,member_id:m.id,member_name:m.name});
+export async function requireCompanyReviewer(db,id,user){if(!validId(id))throw fail('company_not_found',404);const found=await companyFor(db,id,user);if(!['pending','approved'].includes(found.c.verification_status))throw fail('company_verification_required',403);return found;}
+const publicCompany=(c,m,user)=>({id:c.id,name:c.name,revision:c.revision,verification_status:c.verification_status,access_mode:'self_service',application:JSON.parse(c.application_json),verification:JSON.parse(c.verification_json),role:m.role,is_owner:c.owner_id===user,member_id:m.id,member_name:m.name});
 export async function listCompanies(db,user){const rows=(await db.prepare('SELECT c.*,m.role,m.id AS member_id,m.name AS member_name FROM workforce_companies c JOIN workforce_company_members m ON m.company_id=c.id WHERE m.user_id=? AND m.active=1 ORDER BY c.created_at,c.id').bind(user).all()).results;return rows.map(r=>({id:r.id,name:r.name,revision:r.revision,verification_status:r.verification_status,role:r.role,is_owner:r.owner_id===user,member_id:r.member_id,member_name:r.member_name}));}
 const admin=m=>{if(m.role!=='admin')throw fail('company_admin_only',403);};
 const guard='EXISTS (SELECT 1 FROM workforce_companies WHERE id=? AND operation_id=?)';
@@ -17,12 +17,12 @@ const guard='EXISTS (SELECT 1 FROM workforce_companies WHERE id=? AND operation_
 // revision cannot accidentally execute against a different writer's revision.
 async function transaction(db,c,m,user,action,detail,make,condition="1=1",bindings=[]){
  const op=crypto.randomUUID(),at=now();
- const statements=[db.prepare('UPDATE workforce_companies SET revision=revision+1,operation_id=? WHERE id=? AND revision=? AND verification_status=\'approved\' AND EXISTS (SELECT 1 FROM workforce_company_members WHERE company_id=? AND user_id=? AND active=1 AND role=?) AND '+condition).bind(op,c.id,c.revision,c.id,user,m.role,...bindings),...make(op,at),db.prepare(`INSERT INTO workforce_company_events(id,company_id,revision,action,actor,detail_json,at) SELECT ?,?,revision,?,?,?,? FROM workforce_companies WHERE id=? AND operation_id=?`).bind(crypto.randomUUID(),c.id,action,m.name,JSON.stringify(detail),at,c.id,op)];
+ const statements=[db.prepare('UPDATE workforce_companies SET revision=revision+1,operation_id=? WHERE id=? AND revision=? AND verification_status IN (\'pending\',\'approved\') AND EXISTS (SELECT 1 FROM workforce_company_members WHERE company_id=? AND user_id=? AND active=1 AND role=?) AND '+condition).bind(op,c.id,c.revision,c.id,user,m.role,...bindings),...make(op,at),db.prepare(`INSERT INTO workforce_company_events(id,company_id,revision,action,actor,detail_json,at) SELECT ?,?,revision,?,?,?,? FROM workforce_companies WHERE id=? AND operation_id=?`).bind(crypto.randomUUID(),c.id,action,m.name,JSON.stringify(detail),at,c.id,op)];
  const results=await db.batch(statements);if(!results[0].meta.changes)throw fail('company_changed',409);return results;
 }
 export async function companyOverview(db,id,user){
  const {c,m}=await companyFor(db,id,user);const info={company:publicCompany(c,m,user)};
- if(m.role!=='admin'||c.verification_status!=='approved')return info;
+ if(m.role!=='admin'||!['pending','approved'].includes(c.verification_status))return info;
  info.members=(await db.prepare('SELECT id,name,role,active,created_at FROM workforce_company_members WHERE company_id=? ORDER BY created_at,id').bind(id).all()).results.map(r=>({...r,is_self:r.id===m.id}));
  const owner=await db.prepare('SELECT id FROM workforce_company_members WHERE company_id=? AND user_id=?').bind(id,c.owner_id).first();info.owner_member_id=owner.id;
  info.cases=(await db.prepare(`SELECT c.id,c.revision,c.updated_at,c.employee_id IS NOT NULL AS employee_joined,json_extract(c.state_json,'$.name') AS name,json_extract(c.state_json,'$.stage') AS stage,json_extract(c.state_json,'$.self_test') AS self_test,json_extract(c.state_json,'$.version') AS version,m.id AS reviewer_member_id,m.name AS reviewer_name,m.active AS reviewer_active FROM workforce_intake_cases c LEFT JOIN workforce_company_members m ON m.company_id=c.company_id AND m.user_id=c.reviewer_id WHERE c.company_id=? AND COALESCE(json_extract(c.state_json,'$.self_test'),0)=0 AND COALESCE(json_extract(c.state_json,'$.synthetic_demo'),0)=0 ORDER BY c.updated_at DESC`).bind(id).all()).results;
@@ -36,7 +36,7 @@ export async function handleCompanies(path,method,b,request,env,user){
   if(!validName(b.name)||!validName(b.member_name)||!validId(b.id))throw fail('company_input');
   const existing=await db.prepare('SELECT * FROM workforce_companies WHERE id=?').bind(b.id).first();if(existing){if(existing.owner_id!==user)throw fail('id_conflict',409);return companyOverview(db,b.id,user);}
   const count=await db.prepare('SELECT count(*) AS n FROM workforce_companies WHERE owner_id=?').bind(user).first();if(count.n>=10)throw fail('company_limit',429);
-  const application=applicationInput(b);if(!recipientEmail(email))throw fail('applicant_email_required');const at=now(),name=b.name.trim(),display=b.member_name.trim();
+  const application=b.contact_email||b.website||b.authority?applicationInput(b):{};if(!recipientEmail(email))throw fail('applicant_email_required');const at=now(),name=b.name.trim(),display=b.member_name.trim();
   await db.batch([db.prepare('INSERT INTO workforce_companies(id,name,owner_id,revision,operation_id,created_at,application_json,applicant_email) VALUES(?,?,?,1,?,?,?,?)').bind(b.id,name,user,crypto.randomUUID(),at,JSON.stringify(application),email),db.prepare("INSERT INTO workforce_company_members(id,company_id,user_id,name,role,active,created_at) VALUES(?,?,?,?,'admin',1,?)").bind(crypto.randomUUID(),b.id,user,display,at),db.prepare("INSERT INTO workforce_company_events(id,company_id,revision,action,actor,detail_json,at) VALUES(?,?,1,'company_created',?,'{}',?)").bind(crypto.randomUUID(),b.id,display,at)]);
   return companyOverview(db,b.id,user);
  }
@@ -45,11 +45,11 @@ export async function handleCompanies(path,method,b,request,env,user){
   const i=await db.prepare('SELECT * FROM workforce_company_invites WHERE token_hash=?').bind(await digest(b.token)).first();if(!i||i.used_at||i.revoked_at||Date.parse(i.expires_at)<=Date.now())throw fail('invalid_invite',404);
   if(!email||email!==i.email)throw fail('invite_account_mismatch',403);
   const c=await db.prepare('SELECT * FROM workforce_companies WHERE id=?').bind(i.company_id).first(),existing=await db.prepare('SELECT * FROM workforce_company_members WHERE company_id=? AND user_id=?').bind(i.company_id,user).first();
-  if(c.verification_status!=='approved')throw fail('company_verification_required',403);
+  if(!['pending','approved'].includes(c.verification_status))throw fail('company_verification_required',403);
   if(path.endsWith('/invitation'))return {team:{company_name:c.name,role:i.role,expires_at:i.expires_at}};
   if(existing?.active)throw fail('already_company_member',409);
   const op=crypto.randomUUID(),at=now(),display=b.member_name.trim();
-  const gate=db.prepare('UPDATE workforce_companies SET revision=revision+1,operation_id=? WHERE id=? AND revision=? AND verification_status=\'approved\' AND EXISTS(SELECT 1 FROM workforce_company_invites WHERE id=? AND used_at IS NULL AND revoked_at IS NULL AND expires_at>? AND email=?)').bind(op,c.id,c.revision,i.id,at,email);
+  const gate=db.prepare('UPDATE workforce_companies SET revision=revision+1,operation_id=? WHERE id=? AND revision=? AND verification_status IN (\'pending\',\'approved\') AND EXISTS(SELECT 1 FROM workforce_company_invites WHERE id=? AND used_at IS NULL AND revoked_at IS NULL AND expires_at>? AND email=?)').bind(op,c.id,c.revision,i.id,at,email);
   const mem=existing?db.prepare(`UPDATE workforce_company_members SET name=?,role=?,active=1 WHERE id=? AND ${guard}`).bind(display,i.role,existing.id,c.id,op):db.prepare(`INSERT INTO workforce_company_members(id,company_id,user_id,name,role,active,created_at) SELECT ?,?,?,?,?,1,? WHERE ${guard}`).bind(crypto.randomUUID(),c.id,user,display,i.role,at,c.id,op);
   const res=await db.batch([gate,mem,db.prepare(`UPDATE workforce_company_invites SET used_at=? WHERE id=? AND ${guard}`).bind(at,i.id,c.id,op),db.prepare(`INSERT INTO workforce_company_events(id,company_id,revision,action,actor,detail_json,at) SELECT ?,?,revision,'member_joined',?,?,? FROM workforce_companies WHERE id=? AND operation_id=?`).bind(crypto.randomUUID(),c.id,display,JSON.stringify({role:i.role}),at,c.id,op)]);
   if(!res[0].meta.changes)throw fail('company_changed',409);return companyOverview(db,c.id,user);
@@ -62,10 +62,10 @@ export async function handleCompanies(path,method,b,request,env,user){
   if(c.owner_id!==user)throw fail('company_owner_only',403);
   if(!['pending','rejected'].includes(c.verification_status))throw fail('application_locked',409);
   if(!recipientEmail(email))throw fail('applicant_email_required');const application=applicationInput(b),op=crypto.randomUUID(),at=now();
-  const result=await db.batch([db.prepare("UPDATE workforce_companies SET application_json=?,applicant_email=?,verification_status='pending',revision=revision+1,operation_id=? WHERE id=? AND owner_id=? AND revision=? AND verification_status IN ('pending','rejected')").bind(JSON.stringify(application),email,op,id,user,c.revision),db.prepare("INSERT INTO workforce_company_events(id,company_id,revision,action,actor,detail_json,at) SELECT ?,?,revision,'application_updated',?,'{}',? FROM workforce_companies WHERE id=? AND operation_id=?").bind(crypto.randomUUID(),id,m.name,at,id,op)]);
+  const result=await db.batch([db.prepare("UPDATE workforce_companies SET application_json=?,applicant_email=?,revision=revision+1,operation_id=? WHERE id=? AND owner_id=? AND revision=? AND verification_status IN ('pending','rejected')").bind(JSON.stringify(application),email,op,id,user,c.revision),db.prepare("INSERT INTO workforce_company_events(id,company_id,revision,action,actor,detail_json,at) SELECT ?,?,revision,'application_updated',?,'{}',? FROM workforce_companies WHERE id=? AND operation_id=?").bind(crypto.randomUUID(),id,m.name,at,id,op)]);
   if(!result[0].meta.changes)throw fail('company_changed',409);return companyOverview(db,id,user);
  }
- if(c.verification_status!=='approved')throw fail('company_verification_required',403);
+ if(!['pending','approved'].includes(c.verification_status))throw fail('company_verification_required',403);
  if(action==='invites'){
   const recipient=typeof b.email==='string'?b.email.trim().toLowerCase():'';
   if(!/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(recipient)||recipient.length>180||!['reviewer','admin'].includes(b.role))throw fail('company_invite_input');

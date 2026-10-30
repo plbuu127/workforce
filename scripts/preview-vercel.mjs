@@ -1,0 +1,10 @@
+import http from 'node:http';
+import {readFile,mkdir} from 'node:fs/promises';
+import {createClient} from '@libsql/client';
+import {database,migrate} from '../vercel-runtime/database.js';
+import {makeHandler} from '../vercel-runtime/handler.js';
+import {localBucket} from './r2-adapter.mjs';
+await mkdir('.preview-data',{recursive:true});const client=createClient({url:'file:.preview-data/vercel-test.sqlite'}),DB=database(client);await migrate(DB);
+const handle=makeHandler(async()=>({DB,BUCKET:localBucket('.preview-data/vercel-files')}));
+const server=http.createServer(async(req,res)=>{try{let response;const url='http://127.0.0.1:4192'+req.url;if(/^\/(vendor|samples)\/[-A-Za-z0-9_/.]+$/.test(req.url)&&!req.url.includes('..')){const f=await readFile('vercel-static'+req.url);response=new Response(f,{headers:{'content-type':req.url.endsWith('.mjs')?'text/javascript':req.url.endsWith('.pdf')?'application/pdf':req.url.endsWith('.jpg')?'image/jpeg':'application/octet-stream'}});}else{const chunks=[];for await(const part of req)chunks.push(part);response=await handle(new Request(url,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:Buffer.concat(chunks)}:{})}));}res.writeHead(response.status,Object.fromEntries(response.headers));if(response.body)for await(const chunk of response.body)res.write(chunk);res.end();}catch(e){res.writeHead(500);res.end('Preview error');console.error(e.message);}});
+server.listen(4192,'127.0.0.1',()=>console.log('Vercel workflow preview http://127.0.0.1:4192 — local test storage; AI disconnected.'));

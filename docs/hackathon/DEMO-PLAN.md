@@ -49,7 +49,7 @@ AI readings can also be corrected. This separate exercise deliberately contains 
 
 Both roles see the same outcome. Version comparisons, official references, model receipts, and activity records make the process traceable.
 
-Real company workspaces use verified company access and account-bound invitations. Workforce helps employees and companies prepare together. A completed review does not grant immigration approval or permission to work.
+Company workspaces open immediately after sign-in and use account-bound invitations. Workforce helps employees and companies prepare together. A completed review does not grant immigration approval or permission to work.
 
 ## Recording readiness
 

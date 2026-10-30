@@ -32,7 +32,7 @@ Official rules govern if requirements change. This checklist is preparation, not
 - [x] README, MIT license, dependency notices and English 2:55 demo plan.
 - [x] Mocked workflow checks distinguished from live inference and real-user feedback.
 
-- [x] 2026-10-30: checklist-only return to review, expired demo recovery, role-aware task order, interactive situation demo and isolated correction exercise. Current production company approval remains required; a new approved-company two-account test was not claimed.
+- [x] 2026-10-30: checklist-only return to review, expired demo recovery, role-aware task order, interactive situation demo and isolated correction exercise. The prior company approval requirement was subsequently removed at the owner’s request. Login, separate roles and company isolation remain.
 
 ## Still to finish
 

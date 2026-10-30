@@ -16,7 +16,8 @@ assert.equal((await worker.fetch(new Request(origin + '/api/intake'))).status, 4
 const DB = await localDatabase();
 try {
   const tables = (await DB.prepare("SELECT name FROM sqlite_master WHERE type='table'").all()).results.map(t => t.name).sort();
-  assert.deepEqual(tables, ['local_migrations', 'workforce_ai_usage', 'workforce_companies', 'workforce_company_events', 'workforce_company_invites', 'workforce_company_members', 'workforce_demo_sessions', 'workforce_intake_audit', 'workforce_intake_cases']);
+  const expected=['workforce_ai_usage','workforce_companies','workforce_company_events','workforce_company_invites','workforce_company_members','workforce_demo_sessions','workforce_intake_audit','workforce_intake_cases',...(process.env.WORKFORCE_TEST_LIBSQL==='1'?['workforce_accounts','workforce_runtime_migrations','workforce_runtime_rates','workforce_sessions','workforce_upload_chunks','workforce_uploads']:['local_migrations'])].sort();
+  assert.deepEqual(tables,expected);
   const BUCKET = memoryBucket();
   const headers = { 'oai-authenticated-user-id': 'standalone-reviewer', origin, 'content-type': 'application/json' };
   const env = { DB, BUCKET };

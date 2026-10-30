@@ -5,7 +5,7 @@ import {localDatabase} from './sqlite-adapter.mjs';
 import {memoryBucket} from './r2-adapter.mjs';
 const DB=await localDatabase(),env={DB,BUCKET:memoryBucket()};let n=0;const check=(v,m)=>{assert.ok(v,m);n++;};
 try{
- for(const path of ['/','/companies','/employee']){const r=await worker.fetch(new Request('https://workforce.test'+path),env);check(r.status===200,'anonymous can load safe shell '+path);const html=await r.text();check(html.includes('Sign in &amp; apply for access')||html.includes('Sign in & apply for access'),'shell includes onboarding');}
+ for(const path of ['/','/companies','/employee']){const r=await worker.fetch(new Request('https://workforce.test'+path),env);check(r.status===200,'anonymous can load safe shell '+path);const html=await r.text();check(html.includes('Sign in &amp; create workspace')||html.includes('Sign in & create workspace'),'shell includes onboarding');}
  const company=crypto.randomUUID(),caseId=crypto.randomUUID();
  for(const path of ['/api/intake','/api/intake/companies/'+company,'/api/intake/cases/'+caseId,'/api/intake/cases/'+caseId+'/audit','/api/intake/cases/'+caseId+'/export','/api/intake/cases/'+caseId+'/files/'+crypto.randomUUID()+'/original'])check((await worker.fetch(new Request('https://workforce.test'+path),env)).status===401,'anonymous cannot read private endpoint');
  for(const path of ['/api/intake/companies','/api/intake/companies/join','/api/intake/cases','/api/intake/join'])check((await worker.fetch(new Request('https://workforce.test'+path,{method:'POST',headers:{origin:'https://workforce.test','content-type':'application/json'},body:'{}'}),env)).status===401,'anonymous cannot create or join');

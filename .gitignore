@@ -9,3 +9,8 @@ work-*.json
 dist/
 
 .eval-results/
+
+.vercel/
+vercel-static/
+.vercel
+.env*

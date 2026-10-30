@@ -4,6 +4,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
 export async function localDatabase(filename = ':memory:') {
+  if(process.env.WORKFORCE_TEST_LIBSQL==='1'){const {createClient}=await import('@libsql/client');const {database,migrate}=await import('../vercel-runtime/database.js');const client=createClient({url:filename===':memory:'?filename:'file:'+filename}),db=database(client);await migrate(db);return {...db,close(){client.close();}};}
   const sqlite = new DatabaseSync(filename);
   sqlite.exec('CREATE TABLE IF NOT EXISTS local_migrations (name TEXT PRIMARY KEY)');
   for (const name of (await readdir(resolve(import.meta.dirname, '../drizzle'))).filter(name => name.endsWith('.sql')).sort()) {

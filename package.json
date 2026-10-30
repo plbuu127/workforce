@@ -2,18 +2,26 @@
   "name": "workforce",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.25.0",
   "scripts": {
     "build": "node scripts/build.mjs",
     "validate": "node scripts/validate-artifact.mjs",
     "dev": "node scripts/preview.mjs",
     "db:generate": "drizzle-kit generate",
     "test": "node scripts/test-intake.mjs && node scripts/test-preparation.mjs && node scripts/test-isolation.mjs && node scripts/test-long-packets.mjs && node scripts/test-case-updates.mjs && node scripts/test-companies.mjs && node scripts/test-onboarding.mjs && node scripts/test-verification.mjs",
-    "eval:live": "node scripts/evaluate-preparation.mjs --live"
+    "eval:live": "node scripts/evaluate-preparation.mjs --live",
+    "build:vercel": "node scripts/build-vercel.mjs",
+    "test:vercel": "node scripts/test-vercel.mjs"
   },
   "devDependencies": {
     "drizzle-kit": "0.31.10",
     "drizzle-orm": "0.45.2",
     "pdfjs-dist": "6.4.299"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "@vercel/blob": "^2.4.0"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
