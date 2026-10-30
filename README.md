@@ -82,7 +82,7 @@ The domain workflow lives in `worker/`, `shared/` and `public/`; `vercel-runtime
 
 - PDF/JPEG/PNG only; 10 MiB per original, 12 pages/file, 16 pages/case, four document categories and ten versions. Vision processes groups of four pages.
 - Existing model budgets: 20 calls per user and 100 globally per Korea calendar day, plus a Vercel IP limit on analysis/guidance requests. Multi-page runs may consume multiple calls. Provider balances/expiry can impose lower limits; request caps are not a monetary spending guarantee.
-- Live AI was connected and verified. **Credit coverage through judging is still pending**; no paid top-up has been authorized or made. Recheck the provider balance/expiry before submission and judging.
+- Live AI was connected and verified. The connected provider account has a separate promotional account balance in addition to its small trial balance; the trial countdown is not evidence of promotional-credit expiry. Confirm promotional-credit validity and remaining capacity through judging. No paid top-up was made.
 - Browser-rendered pages are not independently proven to correspond cryptographically to the original PDF. Model transcriptions are not independent OCR verification.
 - This is a focused preparation checklist with curated links, not a complete statutory checklist or live legal research. Workforce does not authenticate signatures, decide work authorization, or file with government agencies.
 - The audit hash chain is verified inside the database, not externally notarized. File deletion removes retained document versions/analysis while minimal audit events and review messages remain.

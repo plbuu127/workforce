@@ -64,4 +64,4 @@ See [the sanitized production evidence](vercel-production-verification.json). Th
 
 Email ownership/company identity verification, password reset and email sending are not implemented. Guest access is isolated but depends on its browser cookie. Existing Sites data is not migrated. The optional operator account uses `WORKFORCE_OPERATOR_USER_ID`; it is not required for ordinary workspace creation.
 
-Keep inference credits and expiry valid throughout judging. The observed trial balance/expiry does not yet establish coverage through December judging. No paid top-up or plan upgrade was made. The final video and competition submission are separate remaining tasks.
+Keep inference credits and expiry valid throughout judging. Billing transactions confirmed a separate AI Builder Program promotional balance on the already connected provider account. The header shows only trial credit; its countdown must not be treated as the promotional balance expiry. Confirm the promotional-credit terms for judging-period availability. No paid top-up or plan upgrade was made. The final video and competition submission are separate remaining tasks.
