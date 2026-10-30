@@ -59,6 +59,17 @@ try{
  const checks={company:'Test originals compared in fictional case.',transition:'Test fictional transition was rechecked.',procedure:'Test official route still requires individual confirmation.'};
  for(const t of e7Requirements(c.state))c=(await call(path+'/checklist',t.owner,{revision:c.revision,item_id:t.id,status:'ready',note:'Synthetic preparation checked for this test only.'})).body.case;
  c=(await call(path+'/company-checks','reviewer',{revision:c.revision,checks})).body.case;
+ // A checklist-only response must be able to return after a change request.
+ c=(await call(path+'/request-changes','reviewer',{revision:c.revision,message:'Please record your preparation update and send it back for review.'})).body.case;
+ c=(await call(path+'/checklist','employee',{revision:c.revision,item_id:'identity-ready',status:'ready',note:'Synthetic checklist-only correction recorded.'})).body.case;
+ check(c.state.stage==='reviewer_changes','checklist edit waits for explicit employee handoff');
+ const returnedRevision=c.revision;
+ check((await call(path+'/ask-reviewer','reviewer',{revision:c.revision,message:'Cannot impersonate employee response.'})).status===400,'reviewer cannot return the case as employee');
+ c=(await call(path+'/ask-reviewer','employee',{revision:c.revision,message:'Checklist updated. Please review the existing documents again.'})).body.case;
+ check(c.state.stage==='ready_for_review'&&!c.state.review&&!c.state.review_draft,'checklist-only reply returns to review and removes obsolete decision');
+ check(c.state.analysis.reading.fields.contract_start.value==='2026-11-10'&&c.state.analysis.corrections.length===3,'return preserves analysis and source corrections');
+ check((await call(path+'/ask-reviewer','employee',{revision:returnedRevision,message:'Stale duplicate response.'})).status===409,'stale response cannot overwrite current review');
+ check((await call(path+'/audit','employee')).body.events.at(-1).action==='corrections_returned_for_review','return has a distinct audit event');
  const approval={message:'Fictional preparation review completed. Follow up with your assigned reviewer on the pending contract.',originals_reviewed:true,flags_reviewed:true,guidance_reviewed:true};
  check((await call(path+'/approve','reviewer',{revision:c.revision,...approval})).body.code==='resolution_required','employee situation remains explicit approval consideration');
  c=(await call(path+'/approve','reviewer',{revision:c.revision,...approval,resolution:'The reported new date remains unverified; company will provide the current contract.'})).body.case;

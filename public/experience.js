@@ -59,6 +59,7 @@ function caseNextLabel(c){
  if(s==='processing')return 'AI check in progress';
  if(s==='failed')return 'Check the analysis issue';
  if(c.is_employee&&['needs_changes','reviewer_changes'].includes(s))return 'See what needs updating';
+ if(c.is_reviewer&&s==='reviewer_changes')return 'Waiting for employee updates';
  if(c.is_reviewer&&['ready_for_review','needs_changes'].includes(s))return 'Check findings and review';
  return c.is_employee?'Continue preparing your documents':'See the latest progress';
 }

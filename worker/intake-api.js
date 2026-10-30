@@ -119,7 +119,7 @@ export async function handleIntake(request,env){
       s.stage=issues.some(i=>i.blocking)?'needs_changes':'ready_for_review';row=await save(env,user,row,s,'analysis_completed');return reply({case:expose(row,user)});
     }catch(e){s.stage='failed';s.error_details=e.diagnostics||null;s.error=/^(provider_[a-z_]+|daily_limit|missing_file)$/.test(e.code||'')?e.code:'analysis_failed';row=await save(env,user,row,s,'analysis_failed');return reply({case:expose(row,user),code:s.error},502);}
   }
-  if(action==='ask-reviewer'){if(row.employee_id!==user||!s.analysis||!['needs_changes','ready_for_review'].includes(s.stage)||!cleanText(b.message,5,600))throw error('input');s.employee_note=b.message.trim();s.stage='ready_for_review';row=await save(env,user,row,s,'review_requested');return reply({case:expose(row,user)});}
+  if(action==='ask-reviewer'){if(row.employee_id!==user||!s.analysis||!['needs_changes','ready_for_review','reviewer_changes'].includes(s.stage)||!cleanText(b.message,5,600))throw error('input');const returned=s.stage==='reviewer_changes';s.employee_note=b.message.trim();s.review=null;s.review_draft=null;s.stage='ready_for_review';row=await save(env,user,row,s,returned?'corrections_returned_for_review':'review_requested');return reply({case:expose(row,user)});}
   if(action==='request-changes'||action==='approve'){
     if(row.reviewer_id!==user)throw error('reviewer_only',403);if(!s.analysis||!['needs_changes','ready_for_review'].includes(s.stage))throw error('not_reviewable',409);if(!cleanText(b.message,10,1800)||!safeDraft({en:b.message}))throw error('invalid_message');
     if(b.review_packet)applyReviewPacket(s,b);

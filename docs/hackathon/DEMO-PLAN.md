@@ -1,50 +1,60 @@
-# Workforce · current 2:45 English demonstration
+# Workforce · 2:55 feature demonstration
 
 Entry: https://workforce.sally127506.chatgpt.site/demo
 
-No sign-in is required. This sandbox uses fictional documents and live NVIDIA/Nebius inference. One person switches between Employee and Reviewer views; this is not a real-user study. Real company work requires operator approval and separate invited accounts.
+One person operates both roles with fictional documents. Live analysis calls NVIDIA models on Nebius. The correction exercise is clearly labelled as a deliberately injected error, separate from the live results. Real company cases require approval and separate invited accounts. Do not describe this as a real-user study.
 
 ## Exact recording sequence
 
-1. Open the demo. Select **Start my demo →**. If a previous run is open, select **Start over** → **Restart with original samples**. Restart clears only this fictional packet and history; it does not renew AI usage limits or the six-hour session.
-2. Stay in **Employee view**. The top **YOUR NEXT STEP** card shows the submission action. Immediately below, **Your sample documents** contains the contract PDF, stay photo and company joining PDF. Open the unsigned contract briefly and return to the demo.
-3. Tick **Send these fictional page images to NVIDIA models on Nebius for live analysis.** Select **Submit samples & run live AI**. Keep the actual returned findings visible; do not substitute expected counts if the model differs. The previously verified run found four issues.
-4. Select **Try the reviewer step →**. Review the employee findings and source documents. Select **Request corrected documents**. Select **Try the employee resubmission →**.
-5. Tick the live-analysis consent again and select **Submit signed sample & analyze**. Show the comparison near the top: the previously verified run resolved the signature issue while three date findings remained. Open **Extracted facts & version comparison** for detail if needed.
-6. Select **Try the reviewer step →**, then **Request corrected documents**, then **Try the employee resubmission →**. Tick consent and select **Submit corrected samples & analyze**. This uses a fictional updated stay record and corrected company start date. The app has not extended anyone’s visa.
-7. After the returned packet has no findings, select **Try the reviewer step →**. Compare the three originals. Tick **I compared the sample originals, findings and preparation message. This is a demo decision.** Select **Complete sample review**.
-8. Show **Preparation review complete**. Switch to **Employee view** to show the same outcome. Expand **Official references for human verification**, **Live AI execution evidence** and **Demo activity** briefly. A completed preparation review is not immigration approval or permission to work.
+1. Open `/demo`. Click **Start my demo →**. For an existing run, use **Start over** → **Restart with original samples**. An expired session now returns to a clean start. Restart preserves the existing AI allowance; it does not replenish credits or attempts.
+2. In **Your situation & shared responsibilities**, change **How did your previous job end?** to **Leaving early / other circumstances**, then **Worked through the contract end**. Pause on the added/removed preparation items and the **Employee prepares / Company handles** columns. This is rule-based personalization using the same planner as company cases. Click **Save situation & continue**.
+3. Click **Compare contract & company originals**. Show the source dates (contract November 10; original company record November 1) and the unsigned contract. Click **Close comparison**.
+4. In **Employee view**, tick the live-processing consent and click **Submit samples & run live AI**. Record the actual returned findings. The verified pre-update live run found four. Never replace a different live result with an expected count.
+5. Click **Try the reviewer step →** → **Request corrected documents** → **Try the employee resubmission →**. Tick consent → **Submit signed sample & analyze**. Pause on the version comparison. In the verified run, only the signature finding resolved; three date findings remained.
+6. Repeat **Try the reviewer step →** → **Request corrected documents** → **Try the employee resubmission →**. Tick consent → **Submit corrected samples & analyze**. The fixed demo packet includes the updated stay sample and the company’s corrected start date. No real stay permission was extended.
+7. When the returned packet has no findings: **Try the reviewer step →** → compare originals → tick the review confirmation → **Complete sample review**. Switch **Employee view** to show the same outcome.
+8. Click **3 · Correct a reading** → **Open correction exercise**. Keep **CONTROLLED ERROR EXAMPLE · NO MODEL CALL** visible. Compare the original image; change **Correct date from the original** from `2026-11-30` to `2026-11-10`. The source quote and reason are prefilled for this fictional exercise. Tick **I checked the original page.** → **Save correction & recheck**. Show the before/after and timestamp. This runs the same server correction logic used in company cases, but changes only the separate exercise.
+9. Click **4 · Shared record**. Show the actual version counts and reviewer status. Click **Download demo record** if useful. Briefly expand **Official references for human verification**, **Live AI execution evidence** and **Demo activity**. The public demo activity is distinct from the hash-linked audit of real company cases.
 
-If the guidance provider fails, retain the visible error and use the separately consented **Retry English draft**. If usage is exhausted, stop and arrange remaining credits/allowance; do not imply a cached or simulated result is a new model call.
+## Final edit timeline (175 seconds)
 
-## Edit timeline
+| Time | Keep visible | Product advantage |
+|---|---|---|
+| 0:00–0:10 | App title and fictional/live disclosure | Foreign employee and company work together |
+| 0:10–0:32 | Situation changes and separate task columns | Preparation changes with the employee’s circumstances |
+| 0:32–1:00 | Source comparison, live submission, actual findings | Real document reading with checkable sources |
+| 1:00–1:28 | Reviewer request, signed-only repair, remaining issues | A partial correction cannot erase unrelated findings |
+| 1:28–1:48 | Final corrections and explicit reviewer completion | Shared handoff and reviewed outcome |
+| 1:48–2:16 | Labelled correction exercise, original, before/after | Fix an AI reading without rewriting the original |
+| 2:16–2:43 | Shared record, model receipts, sources and activity | Traceable evidence and version history |
+| 2:43–2:55 | Both roles see the outcome; brief company-access statement | B2B workflow with separate responsibilities |
 
-| Time | Screen |
-|---|---|
-| 0:00–0:15 | Problem, no-sign-in entry, fictional-document disclosure |
-| 0:15–0:45 | Employee next action, actual source pages, live analysis and findings |
-| 0:45–1:15 | Reviewer request, signed-only repair, resolved vs remaining findings |
-| 1:15–1:45 | Remaining corrections, resubmission and fresh analysis |
-| 1:45–2:10 | Original comparison, explicit reviewer confirmation, completed outcome |
-| 2:10–2:35 | Same outcome for employee, official references, model receipts and activity |
-| 2:35–2:45 | Company approval and invitation boundaries; final product statement |
+Cut loading pauses and label them **AI wait shortened**. Do not speed through the added/removed task list, source date comparison, partial-fix result or correction history. Film slowly; edit those key moments at readable speed. All waits and actual findings must remain truthful.
 
-Shorten loading pauses in editing and label them **AI wait shortened**. Never present edited duration as actual processing latency. Keep the entire public YouTube video below three minutes. Do not use the earlier SettleK resident-app video for this independent product.
+Optional short company-workspace insert: **My cases → Team → Assignments**, or a private case’s **History → Verify audit trail → Download preparation summary**. Use an authorized approved company with fictional records. Do not approve a fictional production company just to record footage. These supporting features can be mentioned briefly; they should not displace the core journey above.
 
-## English voiceover
+## English narration (~220 words)
 
-Changing employers in Korea can leave a foreign employee unsure what to prepare, while the company checks conflicting information across documents.
+Changing employers in Korea can leave foreign employees unsure what to prepare, while companies compare information across scattered documents.
 
-Workforce gives both people a shared preparation workflow. These are fictional documents, with real NVIDIA models running on Nebius.
+Workforce gives both sides a shared next step. This demo uses fictional documents and real NVIDIA models on Nebius.
 
-The employee sees the next action first and submits a contract, stay information and company joining details. The model reads the pages. Workforce checks its cited observations for missing information and conflicting dates.
+First, preparation follows the employee’s situation. Changing how the previous job ended changes the relevant evidence. Employee tasks and company responsibilities stay separate.
 
-The reviewer compares the originals and requests corrections. Here, replacing only the signed contract resolves one finding. The date findings remain, so a partial correction cannot silently clear the packet.
+Next, the model reads the source pages. Workforce compares the extracted facts and highlights missing signatures and conflicting dates. The reviewer can view the original documents side by side.
 
-The employee submits the remaining corrected samples. Fresh analysis checks the new version. The reviewer compares the source documents and explicitly completes the preparation review.
+The employee replaces the unsigned contract. That resolves one finding, while the date issues remain. After the remaining documents are corrected, a fresh analysis checks the new version. The reviewer confirms the originals and completes the preparation review.
 
-Both people now see the same outcome. Official references, model execution evidence and the demo activity remain available.
+AI readings can also be corrected. This separate exercise deliberately contains a wrong date; it is not a live model error. I compare the original, enter the correct date, and record why. The mismatch disappears, while the original reading and correction history remain.
 
-The public sandbox is separate from real company records. Operational companies require approval, and staff and employee invitations are bound to their accounts.
+Both roles see the same outcome. Version comparisons, official references, model receipts, and activity records make the process traceable.
 
-Workforce helps foreign employees and their companies move from scattered documents to a clear, reviewed next step. It supports preparation; it does not grant immigration approval or permission to work.
+Real company workspaces use verified company access and account-bound invitations. Workforce helps employees and companies prepare together. A completed review does not grant immigration approval or permission to work.
+
+## Recording readiness
+
+- Test the microphone and screen capture before spending a live analysis attempt.
+- A normal three-version demo uses three vision requests and usually two guidance requests. Existing session and daily limits still apply.
+- Do not repeatedly restart for practice: practice the clicks using the saved result or local environment, and reserve a fresh live run for the take.
+- Never present saved receipts as a new live call. A saved result can be shown as a previously completed analysis.
+- Keep the complete public YouTube video below three minutes; the current official rules request a publicly visible YouTube link.

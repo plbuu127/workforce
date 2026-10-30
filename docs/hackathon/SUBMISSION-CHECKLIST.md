@@ -1,6 +1,6 @@
 # NVIDIA × Nebius submission checklist
 
-Product evidence updated 2026-10-29; official competition requirements last checked 2026-10-29. Product name: Workforce (provisional).
+Product evidence updated 2026-10-30; official competition requirements last checked 2026-10-30. Product name: Workforce (provisional).
 
 ## Official requirements
 
@@ -8,8 +8,8 @@ The [official rules](https://nebiusglobalaihackathon.devpost.com/rules) set the 
 
 - [ ] Confirm entrant eligibility, rights and track: Best Apps and Agents.
 - [x] Working NVIDIA open-model inference through Nebius Token Factory. The [FAQ](https://nebiusglobalaihackathon.devpost.com/details/faqs) permits other hosting for the rest of the app.
-- [x] Public source repository with code, assets, MIT license and setup instructions: https://github.com/plbuu127/workforce.
-- [ ] Judge-accessible working demo/test build, available without charge or restrictions through judging, ending December 15, 2026.
+- [x] Public source repository with code, assets, open-source license and setup instructions: https://github.com/plbuu127/workforce.
+- [ ] Judge-accessible working demo/test build, available without charge or restrictions through judging, ending December 23, 2026 (12:00 pm Pacific Time).
 - [ ] Public YouTube demonstration below three minutes showing the functioning app.
 - [ ] English submission materials, or English translations of all submitted materials.
 - [ ] Describe functionality, NVIDIA/Nebius use, technology feedback and significant changes from earlier work.
@@ -20,7 +20,7 @@ Official rules govern if requirements change. This checklist is preparation, not
 ## Product evidence ready
 
 - [x] Independent source, database, storage and deployment; BuildAI entry preserved.
-- [x] Two distinct signed-in accounts completed upload, analysis, correction request, replacement, reanalysis, approval and employee export.
+- [x] Historical technical test before company-verification gating: two distinct signed-in accounts completed upload, analysis, correction request, replacement, reanalysis, approval and employee export.
 - [x] Three live NVIDIA responses for that case, redacted execution evidence and 11 verified audit events.
 - [x] Situation plan, company-owned evidence, side-by-side source review and readable preparation export.
 - [x] Twelve live synthetic cases: initial 11/12, corrected release regression 12/12; both runs retained.
@@ -29,13 +29,15 @@ Official rules govern if requirements change. This checklist is preparation, not
 - [x] Eight additional live synthetic robustness cases: 8/8, 24/24 fields, 13 requests; no automatic retries.
 - [x] Long PDFs, per-batch quota/evidence and one-form reviewer recording.
 - [x] Guided 4 → 3 → 0 correction workflow, 19 verified audit events and preserved external follow-up.
-- [x] README, MIT license, dependency notices and English 2:45 demo plan.
+- [x] README, MIT license, dependency notices and English 2:55 demo plan.
 - [x] Mocked workflow checks distinguished from live inference and real-user feedback.
+
+- [x] 2026-10-30: checklist-only return to review, expired demo recovery, role-aware task order, interactive situation demo and isolated correction exercise. Current production company approval remains required; a new approved-company two-account test was not claimed.
 
 ## Still to finish
 
 - [ ] Choose the final name if changing Workforce.
-- [x] Publish an independent source snapshot without credentials, account data, local exports or internal Git history. Prior development is disclosed.
+- [x] Published an independent GitHub repository; credentials, account data and local exports are excluded. Keep its code synchronized with the deployed version.
 - [x] Provide a no-sign-in judge entry at https://workforce.sally127506.chatgpt.site/demo. It uses isolated fictional documents with real inference; real company work requires operator approval.
 - [ ] Confirm credits and access throughout the judging period; current AI request caps can block new analysis.
 - [ ] Record the current no-sign-in demo with fictional files and the visible role switch. It is one person trying both roles, distinct from the earlier two-account technical test. Hide any account emails and invitation links.

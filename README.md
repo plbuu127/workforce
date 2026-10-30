@@ -35,17 +35,18 @@ The owner authorized public visitor access on 2026-10-29. Anyone can open the en
 
 Open [the live judging demo](https://workforce.sally127506.chatgpt.site/demo). No login or company approval is required:
 
-1. Select **Start my demo**, inspect the three fictional PDF/photo originals, check consent and select **Submit samples & run live AI**.
+1. Select **Start my demo**. Change how the previous job ended to compare preparation items and employee/company responsibilities, then **Save situation & continue**. Open **Compare contract & company originals**, inspect the fictional source pages, check consent and select **Submit samples & run live AI**.
 2. Open **Reviewer view**, inspect source evidence and select **Request corrected documents**.
 3. Return to **Employee view**, consent and select **Submit signed sample & analyze**. Compare the resolved signature finding with the remaining date conflicts.
 4. Request changes again in **Reviewer view**, then use **Submit corrected samples & analyze** in **Employee view**.
-5. In **Reviewer view**, compare the corrected originals and findings, check the demo review confirmation and select **Complete sample review**. Open the activity and live execution details.
+5. In **Reviewer view**, compare the corrected originals and findings, check the demo review confirmation and select **Complete sample review**. Open **Shared record** to compare the actual version findings, reviewer outcome and execution receipts.
+6. Open **Correct a reading** for a separate, clearly labelled injected-error exercise. Compare the original, correct the date, confirm the source and save. It uses the production correction logic without making a model request or changing the live analysis. Before/after values and reasons remain visible.
 
 Each role sees its next action first, followed by its findings and original documents. Extracted facts, official references and execution receipts can be expanded. After review, all status text reflects the completed decision. **Start over** asks for confirmation and restores only the fictional sample packet; it retains the session expiry, analysis attempts, guidance attempts and daily quotas. It cannot interrupt an active analysis.
 
 The sandbox accepts only fixed server-selected fictional samples. It cannot accept arbitrary uploads, company identifiers, external document URLs, invitations or membership changes. Each browser receives a separate six-hour HttpOnly session; expired rows are removed on a later session start. The scenario reminder uses 28 October 2026, clearly labeled. There is no prerecorded successful model fallback. If the guidance provider fails, curated official references and document findings remain visible, and a consented **Retry English draft** makes a separately metered request. The zero-finding message is explicitly a workflow status. Trying both roles in one browser is a demonstration, not a two-user study.
 
-Real document uploads and the full profile/checklist/correction workflow remain in approved companies. Public demo budget: at most 12 model calls per source IP per Korea calendar day, 60 across demo visitors, six analysis attempts per session. Demo calls also consume the existing 100-call Site-wide ceiling. These limits and provider quotas can temporarily prevent new analysis; saved demo results remain readable until the session expires.
+Real document uploads and the full profile/checklist/correction workflow remain in approved companies. The public demo now exposes a bounded situation planner and an isolated correction exercise, using the same underlying planner and correction logic. Expired sessions return to a clean start with a friendly explanation. Public demo budget: at most 12 model calls per source IP per Korea calendar day, 60 across demo visitors, six analysis attempts per session. Demo calls also consume the existing 100-call Site-wide ceiling. These limits and provider quotas can temporarily prevent new analysis; saved demo results remain readable until the session expires.
 
 On 2026-10-29, the production sandbox completed the original → signed-only → corrected sequence using actual NVIDIA/Nebius calls: four checks, three remaining checks, then zero internal document findings and a sample reviewer completion with 14 activity events. The first guidance request was rejected by the provider; a separately metered guidance retry succeeded. Both vision and guidance HTTP 200 receipts were inspected. This was an agent-operated synthetic acceptance test, not an external user study.
 
@@ -84,7 +85,7 @@ The 2026-10-29 improvement adds an action-first employee screen, a condition-dep
 
 A paired agent-operated measurement used the same initial/corrected synthetic packet. Both arms recorded 18/18 facts with no missed expected findings. Manual transcription required 18 field entries; AI-assisted verification required no field edits. Combined time was 55.6 vs 52.4 seconds including AI processing; this small, tool-dependent difference is **not** human productivity evidence. No reduction in follow-up rounds was demonstrated. [Raw measurement and limitations](docs/workflow-measurement.md).
 
-See the [2:45 English demo plan](docs/hackathon/DEMO-PLAN.md) and [submission checklist](docs/hackathon/SUBMISSION-CHECKLIST.md). The name remains provisional. Public source: https://github.com/plbuu127/workforce. Video and final submission remain pending. Judges can open `/demo` without an account. Company applications and real cases follow the approval workflow.
+See the [2:55 English demo plan](docs/hackathon/DEMO-PLAN.md) and [submission checklist](docs/hackathon/SUBMISSION-CHECKLIST.md). The name remains provisional. Public repository publication, video and final submission remain pending. Judges can open `/demo` without an account. Company applications and real cases follow the approval workflow.
 
 - PDF/JPEG/PNG only; 10 MB per original, 12 pages per file, 16 pages per case, 4 document categories, 10 versions. Original files and rendered page images are stored privately.
 - 20 model calls per user per Korea calendar day and 100 for the Site; provider quotas can be lower.
@@ -131,6 +132,10 @@ At `/operator`, the designated account sees the authenticated applicant email an
 
 Unverified or suspended companies cannot create real cases, issue or accept staff/employee invitations, access case files/history/exports or process changes. Approval is checked at both access and write boundaries. Existing records are retained while locked. Applications missing authenticated applicant email must be resubmitted by their signed-in owner before approval. Existing unbound employee links must be renewed with the recipient email after company approval.
 
+## October 30 workflow fixes
+
+Employees can return checklist-only updates after a change request with **Send updates for review**. This clears the outdated review decision and draft, preserves document findings, and records a separate return event. Reviewer navigation appears only when the destination action is available, and company document upload precedes post-analysis attestations. The automated suite now has 357 assertions plus service-isolation checks; model transport in that suite is mocked. Live production evidence is recorded separately.
+
 ## Source provenance
 
-This public release is a source snapshot of the independent hosted Workforce project at commit `0a297164c8bca23f60c4538ba7109c94c6286741` (deployed version 22), with submission-document updates. Runtime source and synthetic test assets are included; server secrets, local databases, private account records and internal Git history are excluded. This publication date is not the start date of development. The workflow was developed earlier in SettleK Navigator and substantially extended as described above.
+This public release is a source snapshot of the independent hosted Workforce project at commit `0c0981d266c20e5267a2fe37d39cf02d57e058dc` (deployed version 24), with public-release provenance. Runtime source and synthetic test assets are included; server secrets, local databases, private account records and internal Git history are excluded. This publication date is not the start date of development. The workflow was developed earlier in SettleK Navigator and substantially extended as described above.
